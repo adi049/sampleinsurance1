@@ -69,7 +69,7 @@ export default function MotorInsurance() {
           </Reveal>
           <Reveal as="aside" className="journey-aside" direction="right" amount={0.2}>
             <figure className="journey-photo journey-photo-motor">
-              <img src="/images/motor-cover.jpg" alt="Car keys held inside a vehicle" width="1400" height="2489" loading="lazy" />
+              <img src={`${import.meta.env.BASE_URL}images/motor-cover.jpg`} alt="Car keys held inside a vehicle" width="1400" height="2489" loading="lazy" />
               <figcaption>Vehicle protection context</figcaption>
             </figure>
             <p className="eyebrow">WHAT COMES NEXT</p>
