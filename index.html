@@ -1,15 +1,1607 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0B1F33" />
-    <meta name="description" content="Explore motor, health, life and other insurance journeys with a clear, structured SAMPLE WEBSITE experience." />
-    <title>SAMPLE WEBSITE | Insurance, made clearer</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUNA Insurance | Compare Health, Motor, Life & Investment Plans in India</title>
+<meta name="description" content="LUNA Insurance is a premium Indian insurance marketplace. Compare car, bike, health, term life, travel, home and investment-linked insurance with clear information and dedicated claims support.">
+<meta name="keywords" content="LUNA Insurance, health insurance India, car insurance, bike insurance, term life insurance, investment plans, claims support">
+<meta name="author" content="LUNA Insurance">
+<meta property="og:title" content="LUNA Insurance — Insurance that protects what matters most">
+<meta property="og:description" content="Compare Health, Motor, Life and Investment options with clear guidance and human support.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=70">
+<meta name="theme-color" content="#0B1F33">
+<link rel="canonical" href="https://www.lunainsurance.example/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"InsuranceAgency","name":"LUNA Insurance","description":"Indian insurance marketplace for Health, Motor, Life and Investment-linked insurance comparison and servicing.","areaServed":"India","slogan":"Insurance that protects what matters most"}
+</script>
+<script>
+tailwind.config={theme:{extend:{colors:{navy:'#0B1F33',navy2:'#123B5D',teal:'#0F766E',tealLight:'#E6F7F4',gold:'#D4A72C',goldSoft:'#F3E8C2',offwhite:'#F7F8F6',ink:'#17212B',muted:'#5E6B75',line:'#DCE5E8'},fontFamily:{display:['Fraunces','serif'],sans:['Inter','sans-serif']},boxShadow:{subtle:'0 1px 2px rgba(11,31,51,.06),0 8px 24px rgba(11,31,51,.08)',card:'0 2px 8px rgba(11,31,51,.06),0 14px 34px rgba(11,31,51,.09)'}}}}
+</script>
+<style>
+:root{--navy:#0B1F33;--navy2:#123B5D;--teal:#0F766E;--teal-dark:#0C5F59;--teal-light:#E6F7F4;--gold:#D4A72C;--gold-soft:#F3E8C2;--offwhite:#F7F8F6;--text:#17212B;--muted:#5E6B75;--border:#DCE5E8;--shadow:0 1px 2px rgba(11,31,51,.06),0 8px 24px rgba(11,31,51,.08)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased;line-height:1.6}
+.font-display{font-family:'Fraunces',serif}
+::selection{background:var(--gold-soft);color:var(--navy)}
+a{transition:color .2s}
+button{transition:all .2s}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:10px 16px;z-index:100;border-radius:0 0 6px 0}
+.skip-link:focus{left:0}
+#progressBar{position:fixed;top:0;left:0;height:3px;background:var(--gold);width:0;z-index:120;transition:width .1s linear}
+/* utility */
+.utility-bar a:hover{color:var(--gold-soft)}
+/* nav */
+#mainHeader{transition:box-shadow .3s}
+#mainHeader.scrolled{box-shadow:0 2px 12px rgba(11,31,51,.1)}
+.nav-link{position:relative;font-weight:600;font-size:14.5px;color:var(--text);padding:10px 12px;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.nav-link:hover{color:var(--teal)}
+.nav-link.active{color:var(--navy)}
+.nav-link.active::after{content:'';position:absolute;left:12px;right:12px;bottom:2px;height:2.5px;background:var(--gold);border-radius:2px}
+.nav-link.active::before{content:'';position:absolute;left:50%;transform:translateX(-50%);bottom:8px;width:5px;height:5px;background:var(--teal);border-radius:50%;display:none}
+.nav-item{position:relative}
+.dropdown{position:absolute;top:100%;left:0;min-width:280px;background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(8px);transition:all .22s ease;padding:10px;z-index:60}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown.wide{min-width:520px}
+.dropdown-link{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border-radius:6px}
+.dropdown-link:hover{background:var(--offwhite)}
+.dropdown-link:hover .dd-icon{background:var(--teal);color:#fff}
+.dd-icon{width:34px;height:34px;border-radius:7px;background:var(--teal-light);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:14.5px;border-radius:6px;padding:12px 20px;cursor:pointer;border:1px solid transparent;line-height:1.2}
+.btn-teal{background:var(--teal);color:#fff;box-shadow:0 4px 12px rgba(15,118,110,.25)}
+.btn-teal:hover{background:var(--teal-dark);transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,118,110,.3)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy2);transform:translateY(-1px)}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:#c19928;transform:translateY(-1px)}
+.btn-outline{border-color:var(--border);color:var(--navy);background:#fff}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-light)}
+.btn-white-outline{border-color:rgba(255,255,255,.35);color:#fff}
+.btn-white-outline:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.btn-sm{padding:9px 14px;font-size:13.5px}
+.btn-lg{padding:15px 26px;font-size:15.5px}
+/* eyebrow */
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.eyebrow::before{content:'';width:28px;height:2.5px;background:var(--gold);border-radius:2px;display:inline-block}
+.eyebrow.on-dark{color:var(--gold-soft)}
+/* cards */
+.card{background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:0 1px 2px rgba(11,31,51,.05)}
+.card-hover{transition:all .25s ease}
+.card-hover:hover{transform:translateY(-4px);box-shadow:0 2px 8px rgba(11,31,51,.06),0 14px 34px rgba(11,31,51,.1);border-color:#BFD9D5}
+.icon-tile{width:48px;height:48px;border-radius:8px;background:var(--teal-light);color:var(--teal);display:flex;align-items:center;justify-content:center;transition:all .25s}
+.card-hover:hover .icon-tile{background:var(--teal);color:#fff}
+.gold-top{position:relative}
+.gold-top::before{content:'';position:absolute;top:-1px;left:24px;right:24px;height:3px;background:var(--gold);border-radius:0 0 4px 4px}
+/* forms */
+.label{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;display:block}
+.input,.select,textarea.input{width:100%;border:1px solid var(--border);border-radius:6px;padding:11px 13px;font-size:14.5px;background:#fff;color:var(--text);outline:none;transition:all .2s}
+.input:focus,.select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,118,110,.15)}
+.input.error{border-color:#C0392B;box-shadow:0 0 0 3px rgba(192,57,43,.12)}
+.hint{font-size:12.5px;color:var(--muted)}
+input[type=range]{width:100%;accent-color:var(--teal);height:24px;cursor:pointer}
+.checkbox-card{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:6px;padding:10px 12px;cursor:pointer;transition:all .2s;font-size:13.5px}
+.checkbox-card:hover{border-color:var(--teal)}
+.checkbox-card.selected{border-color:var(--teal);background:var(--teal-light)}
+.checkbox-card input{accent-color:var(--teal);margin-top:3px}
+/* quote tabs */
+.quote-tab{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px 14px;border-radius:8px;border:1px solid transparent;cursor:pointer;transition:all .2s}
+.quote-tab:hover{background:var(--offwhite)}
+.quote-tab.active{background:#fff;border-color:var(--border);box-shadow:var(--shadow);position:relative}
+.quote-tab.active::before{content:'';position:absolute;left:-1px;top:12px;bottom:12px;width:3px;background:var(--gold);border-radius:3px}
+.quote-tab.active .qt-icon{background:var(--navy);color:#fff}
+.qt-icon{width:40px;height:40px;border-radius:7px;background:var(--teal-light);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+/* steps */
+.step-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;border:1.5px solid var(--border);color:var(--muted);background:#fff;flex-shrink:0}
+.step-item.active .step-dot{background:var(--teal);border-color:var(--teal);color:#fff}
+.step-item.done .step-dot{background:var(--navy);border-color:var(--navy);color:#fff}
+.step-line{height:1.5px;background:var(--border);flex:1;min-width:20px}
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.reveal.revealed{opacity:1;transform:none}
+.reveal-d1{transition-delay:.08s}.reveal-d2{transition-delay:.16s}.reveal-d3{transition-delay:.24s}.reveal-d4{transition-delay:.32s}
+/* how line */
+.how-connector{position:absolute;top:32px;left:12%;right:12%;height:2px;background:var(--border);z-index:0}
+.how-connector::after{content:'';position:absolute;left:0;top:0;height:100%;width:0;background:var(--teal);transition:width 1.2s ease}
+.how-wrap.inview .how-connector::after{width:100%}
+.how-num{width:64px;height:64px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:24px;font-weight:700;border:3px solid var(--gold-soft);box-shadow:var(--shadow);position:relative;z-index:1}
+/* faq */
+.faq-item{border:1px solid var(--border);border-radius:8px;background:#fff;overflow:hidden;transition:all .2s}
+.faq-item.open{border-color:var(--teal);box-shadow:var(--shadow)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:17px 18px;text-align:left;font-weight:700;font-size:15px;color:var(--navy);cursor:pointer;background:none;border:none}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-a{max-height:400px}
+.faq-icon{width:30px;height:30px;border-radius:50%;background:var(--offwhite);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .25s;color:var(--teal)}
+.faq-item.open .faq-icon{background:var(--teal);color:#fff;transform:rotate(45deg)}
+/* pages */
+.page{display:none}
+.page.active{display:block;animation:pageIn .45s ease}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* mobile drawer */
+#mobileMenu{position:fixed;top:0;right:0;bottom:0;width:min(380px,92vw);background:#fff;z-index:90;transform:translateX(105%);transition:transform .38s cubic-bezier(.22,.61,.36,1);display:flex;flex-direction:column;box-shadow:-12px 0 40px rgba(11,31,51,.2)}
+#mobileMenu.open{transform:none}
+#menuOverlay{position:fixed;inset:0;background:rgba(11,31,51,.55);backdrop-filter:blur(2px);z-index:80;opacity:0;visibility:hidden;transition:all .3s}
+#menuOverlay.open{opacity:1;visibility:visible}
+.mob-sub{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.mob-item.open .mob-sub{max-height:400px}
+.mob-item.open .mob-chev{transform:rotate(180deg)}
+.mob-chev{transition:transform .25s}
+/* modals */
+.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;visibility:hidden;transition:all .28s ease}
+.modal.open{opacity:1;visibility:visible}
+.modal-bg{position:absolute;inset:0;background:rgba(11,31,51,.6);backdrop-filter:blur(3px)}
+.modal-box{position:relative;background:#fff;border-radius:10px;max-width:560px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.25);transform:translateY(16px) scale(.98);transition:transform .28s ease;border-top:4px solid var(--gold)}
+.modal.open .modal-box{transform:none}
+.modal-box.lg{max-width:860px}
+/* search */
+#searchOverlay{position:fixed;inset:0;z-index:100;background:rgba(11,31,51,.72);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:all .25s}
+#searchOverlay.open{opacity:1;visibility:visible}
+/* chat */
+#chatPanel{position:fixed;bottom:96px;right:20px;width:min(360px,calc(100vw - 32px));height:480px;max-height:70vh;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 20px 60px rgba(11,31,51,.25);z-index:70;display:flex;flex-direction:column;overflow:hidden;transform:translateY(16px) scale(.98);opacity:0;visibility:hidden;transition:all .28s ease}
+#chatPanel.open{opacity:1;visibility:visible;transform:none}
+.chat-msg{max-width:82%;padding:10px 13px;border-radius:10px;font-size:13.5px;line-height:1.5}
+.chat-bot{background:var(--offwhite);border:1px solid var(--border);border-bottom-left-radius:3px}
+.chat-user{background:var(--navy);color:#fff;border-bottom-right-radius:3px;margin-left:auto}
+.quick-chip{font-size:12.5px;font-weight:600;border:1px solid var(--border);border-radius:20px;padding:6px 12px;cursor:pointer;background:#fff}
+.quick-chip:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-light)}
+.typing span{width:6px;height:6px;background:var(--muted);border-radius:50%;display:inline-block;animation:blink 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@keyframes blink{0%,100%{opacity:.3}50%{opacity:1}}
+/* toast */
+#toastWrap{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:130;display:flex;flex-direction:column;gap:10px;align-items:center;width:min(520px,calc(100vw - 32px))}
+.toast{background:var(--navy);color:#fff;padding:13px 18px;border-radius:8px;font-size:14px;font-weight:600;display:flex;gap:10px;align-items:center;box-shadow:0 12px 32px rgba(0,0,0,.25);animation:toastIn .3s ease;border-left:4px solid var(--gold);width:100%}
+.toast.success{border-left-color:#2ECC71}.toast.error{border-left-color:#E74C3C}
+@keyframes toastIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+/* timeline */
+.tl-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:2px solid var(--border);background:#fff;color:var(--muted)}
+.tl-item.done .tl-dot{background:var(--teal);border-color:var(--teal);color:#fff}
+.tl-item.current .tl-dot{background:var(--gold);border-color:var(--gold);color:var(--navy);box-shadow:0 0 0 4px var(--gold-soft)}
+.tl-line{width:2px;background:var(--border);flex:1;min-height:28px;margin:4px auto}
+.tl-item.done .tl-line{background:var(--teal)}
+/* table */
+.cmp-table{width:100%;border-collapse:separate;border-spacing:0;font-size:14px}
+.cmp-table th,.cmp-table td{padding:13px 14px;text-align:left;border-bottom:1px solid var(--border)}
+.cmp-table thead th{background:var(--navy);color:#fff;font-size:13px;letter-spacing:.02em}
+.cmp-table thead th:first-child{border-radius:8px 0 0 0}.cmp-table thead th:last-child{border-radius:0 8px 0 0}
+.cmp-table tbody tr:hover td{background:#FAFBFA}
+/* partner slot */
+.partner-slot{border:1.5px dashed #B9C8CE;border-radius:8px;background:#FBFDFC;min-height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:20px;text-align:center;transition:all .2s}
+.partner-slot:hover{border-color:var(--teal);background:var(--teal-light)}
+/* phone mock */
+.phone{width:280px;height:560px;background:var(--navy);border-radius:32px;padding:12px;box-shadow:0 24px 60px rgba(11,31,51,.3);border:1px solid #1e3a55}
+.phone-screen{background:#fff;border-radius:22px;height:100%;overflow:hidden;display:flex;flex-direction:column}
+/* marquee */
+.marquee{overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:36px;animation:scroll 28s linear infinite;padding-right:36px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+/* otp */
+.otp-box{width:52px;height:56px;text-align:center;font-size:22px;font-weight:800;border:1.5px solid var(--border);border-radius:8px;outline:none}
+.otp-box:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,118,110,.15)}
+/* misc */
+.divider-gold{width:48px;height:3px;background:var(--gold);border-radius:3px}
+.dot-grid{background-image:radial-gradient(#DCE5E8 1px,transparent 1px);background-size:18px 18px}
+.hero-pattern{background-color:var(--offwhite);background-image:linear-gradient(180deg,#F7F8F6 0%,#FFFFFF 100%)}
+.breadcrumb a:hover{color:var(--gold)}
+#backTop{position:fixed;bottom:96px;left:20px;width:44px;height:44px;border-radius:8px;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;color:var(--navy);z-index:65;opacity:0;visibility:hidden;transition:all .25s;cursor:pointer}
+#backTop.show{opacity:1;visibility:visible}
+#backTop:hover{background:var(--navy);color:#fff}
+.tab-pill{padding:9px 18px;border-radius:20px;font-size:13.5px;font-weight:700;border:1px solid var(--border);background:#fff;cursor:pointer;transition:all .2s;white-space:nowrap}
+.tab-pill.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tab-pill:hover:not(.active){border-color:var(--teal);color:var(--teal)}
+.article-card img{transition:transform .5s ease}
+.article-card:hover img{transform:scale(1.05)}
+@media(max-width:1023px){.dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;padding:0;display:none}.nav-item.open .dropdown{display:block}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}.reveal{opacity:1;transform:none}.marquee-track{animation:none}}
+.reduced-motion .reveal{opacity:1!important;transform:none!important}
+.scrollbar-thin::-webkit-scrollbar{width:6px;height:6px}.scrollbar-thin::-webkit-scrollbar-thumb{background:#CBD8DC;border-radius:4px}
+</style>
+</head>
+<body class="bg-white">
+<a href="#main" class="skip-link">Skip to main content</a>
+<div id="progressBar" aria-hidden="true"></div>
+
+<!-- TOP UTILITY BAR -->
+<div class="utility-bar bg-navy text-white text-[13px] hidden md:block">
+  <div class="max-w-[1280px] mx-auto px-5 flex justify-between items-center h-10">
+    <div class="flex items-center gap-2 text-white/85">
+      <i data-lucide="shield-check" class="w-4 h-4 text-gold"></i>
+      <span>A customer-first insurance marketplace · Aligned with IRDAI consumer guidelines</span>
+    </div>
+    <nav class="flex items-center gap-5" aria-label="Utility">
+      <a href="tel:18004190000" class="flex items-center gap-1.5 hover:text-goldSoft"><i data-lucide="headphones" class="w-3.5 h-3.5"></i> Customer Support: 1800 419 0000</a>
+      <button data-route="contact" class="hover:text-goldSoft nav-goto">Contact</button>
+      <button data-faq-goto class="hover:text-goldSoft">Help</button>
+      <span class="w-px h-4 bg-white/20"></span>
+      <button onclick="openModal('loginModal')" class="flex items-center gap-1.5 font-semibold hover:text-goldSoft" aria-label="Login"><i data-lucide="user" class="w-3.5 h-3.5"></i> Login</button>
+    </nav>
+  </div>
+</div>
+<div class="bg-navy text-white text-[12.5px] md:hidden">
+  <div class="px-4 py-2 flex justify-between items-center">
+    <a href="tel:18004190000" class="flex items-center gap-1.5"><i data-lucide="phone-call" class="w-3.5 h-3.5 text-gold"></i> 1800 419 0000</a>
+    <button onclick="openModal('loginModal')" class="font-semibold flex items-center gap-1"><i data-lucide="user" class="w-3.5 h-3.5"></i> Login</button>
+  </div>
+</div>
+
+<!-- MAIN HEADER -->
+<header id="mainHeader" class="sticky top-0 z-50 bg-white border-b border-line">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-5 flex items-center justify-between h-[70px] gap-3">
+    <button data-route="home" class="nav-goto flex items-center gap-2.5 shrink-0" aria-label="LUNA Insurance home">
+      <span class="w-10 h-10 rounded-lg bg-navy flex items-center justify-center relative overflow-hidden">
+        <i data-lucide="moon-star" class="w-5 h-5 text-gold"></i>
+        <span class="absolute bottom-0 left-0 right-0 h-[3px] bg-gold"></span>
+      </span>
+      <span class="text-left leading-none">
+        <span class="block font-display font-bold text-[22px] tracking-tight text-navy">LUNA</span>
+        <span class="block text-[10.5px] font-800 font-bold tracking-[.28em] text-teal">INSURANCE</span>
+      </span>
+    </button>
+    <nav class="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
+      <div class="nav-item">
+        <button class="nav-link" data-nav="insurance" onclick="toggleDropdown(this,event)">Insurance <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i></button>
+        <div class="dropdown wide">
+          <div class="grid grid-cols-2 gap-1">
+            <button class="dropdown-link nav-goto text-left" data-route="health"><span class="dd-icon"><i data-lucide="heart-pulse" class="w-4.5 h-4.5 w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Health Insurance</span><span class="block text-[12.5px] text-muted">Individual, family & senior care</span></span></button>
+            <button class="dropdown-link nav-goto text-left" data-route="motor"><span class="dd-icon"><i data-lucide="car" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Motor Insurance</span><span class="block text-[12.5px] text-muted">Car & two-wheeler cover</span></span></button>
+            <button class="dropdown-link nav-goto text-left" data-route="life"><span class="dd-icon"><i data-lucide="umbrella" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Life Insurance</span><span class="block text-[12.5px] text-muted">Term, savings & child plans</span></span></button>
+            <button class="dropdown-link nav-goto text-left" data-route="investment"><span class="dd-icon"><i data-lucide="trending-up" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Investment Plans</span><span class="block text-[12.5px] text-muted">Retirement & wealth goals</span></span></button>
+          </div>
+          <button class="dropdown-link nav-goto w-full mt-1 bg-offwhite text-left" data-route="insurance"><span class="dd-icon"><i data-lucide="layout-grid" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">View all insurance <span class="text-teal">→</span></span><span class="block text-[12.5px] text-muted">Travel, home, business & more</span></span></button>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" data-nav="health" onclick="toggleDropdown(this,event)">Health <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i></button>
+        <div class="dropdown">
+          <button class="dropdown-link nav-goto w-full text-left" data-route="health"><span class="dd-icon"><i data-lucide="user" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Individual Health</span><span class="block text-[12.5px] text-muted">Cover for one person</span></span></button>
+          <button class="dropdown-link nav-goto w-full text-left" data-route="health"><span class="dd-icon"><i data-lucide="users" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Family Floater</span><span class="block text-[12.5px] text-muted">One cover for family</span></span></button>
+          <button class="dropdown-link nav-goto w-full text-left" data-route="health"><span class="dd-icon"><i data-lucide="heart-handshake" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Senior Citizen</span><span class="block text-[12.5px] text-muted">For parents 60+</span></span></button>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" data-nav="motor" onclick="toggleDropdown(this,event)">Motor <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i></button>
+        <div class="dropdown">
+          <button class="dropdown-link nav-goto w-full text-left" data-route="motor"><span class="dd-icon"><i data-lucide="car" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Car Insurance</span><span class="block text-[12.5px] text-muted">Comprehensive & third-party</span></span></button>
+          <button class="dropdown-link nav-goto w-full text-left" data-route="motor"><span class="dd-icon"><i data-lucide="bike" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Bike Insurance</span><span class="block text-[12.5px] text-muted">Two-wheeler protection</span></span></button>
+          <button class="dropdown-link nav-goto w-full text-left" data-route="motor"><span class="dd-icon"><i data-lucide="refresh-ccw" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Renewals & NCB</span><span class="block text-[12.5px] text-muted">Keep no-claim bonus intact</span></span></button>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" data-nav="life" onclick="toggleDropdown(this,event)">Life <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i></button>
+        <div class="dropdown">
+          <button class="dropdown-link nav-goto w-full text-left" data-route="life"><span class="dd-icon"><i data-lucide="shield" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Term Insurance</span><span class="block text-[12.5px] text-muted">High cover, low premium</span></span></button>
+          <button class="dropdown-link nav-goto w-full text-left" data-route="life"><span class="dd-icon"><i data-lucide="piggy-bank" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Savings & Endowment</span><span class="block text-[12.5px] text-muted">Protection + savings</span></span></button>
+          <button class="dropdown-link nav-goto w-full text-left" data-route="life"><span class="dd-icon"><i data-lucide="baby" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Child Plans</span><span class="block text-[12.5px] text-muted">Secure their milestones</span></span></button>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" data-nav="investment" onclick="toggleDropdown(this,event)">Investment <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i></button>
+        <div class="dropdown">
+          <button class="dropdown-link nav-goto w-full text-left" data-route="investment"><span class="dd-icon"><i data-lucide="line-chart" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">ULIP & Market-linked</span><span class="block text-[12.5px] text-muted">Understand risks & charges</span></span></button>
+          <button class="dropdown-link nav-goto w-full text-left" data-route="investment"><span class="dd-icon"><i data-lucide="landmark" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Retirement & Pension</span><span class="block text-[12.5px] text-muted">Plan steady income</span></span></button>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" data-nav="claims" onclick="toggleDropdown(this,event)">Claims <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i></button>
+        <div class="dropdown">
+          <button class="dropdown-link nav-goto w-full text-left" data-route="claims"><span class="dd-icon"><i data-lucide="file-plus-2" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">File a Claim</span><span class="block text-[12.5px] text-muted">Intimate in minutes</span></span></button>
+          <button class="dropdown-link nav-goto w-full text-left" data-route="claims" data-anchor="trackClaim"><span class="dd-icon"><i data-lucide="radar" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Track Claim</span><span class="block text-[12.5px] text-muted">Live status updates</span></span></button>
+          <button class="dropdown-link nav-goto w-full text-left" data-route="claims"><span class="dd-icon"><i data-lucide="life-buoy" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14px] text-navy">Claims Assistance</span><span class="block text-[12.5px] text-muted">Talk to an advisor</span></span></button>
+        </div>
+      </div>
+      <button class="nav-link nav-goto" data-nav="about" data-route="about">About</button>
+      <button class="nav-link nav-goto" data-nav="contact" data-route="contact">Contact</button>
+    </nav>
+    <div class="flex items-center gap-2.5">
+      <button onclick="openSearch()" class="w-10 h-10 rounded-md border border-line hidden sm:flex items-center justify-center text-navy hover:border-teal hover:text-teal" aria-label="Search"><i data-lucide="search" class="w-[18px] h-[18px]"></i></button>
+      <button class="btn btn-teal btn-sm !py-2.5 nav-goto hidden sm:inline-flex" data-route="home" data-anchor="quoteSection">Get a Quote <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+      <button id="hamburger" class="lg:hidden w-10 h-10 rounded-md border border-line flex items-center justify-center text-navy" aria-label="Open menu" aria-expanded="false"><i data-lucide="menu" class="w-5 h-5"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div id="menuOverlay" onclick="closeMobile()"></div>
+<aside id="mobileMenu" aria-label="Mobile navigation">
+  <div class="flex items-center justify-between px-5 h-[70px] border-b border-line">
+    <div class="flex items-center gap-2">
+      <span class="w-9 h-9 rounded-lg bg-navy flex items-center justify-center"><i data-lucide="moon-star" class="w-4 h-4 text-gold"></i></span>
+      <span class="leading-none"><span class="block font-display font-bold text-[19px] text-navy">LUNA</span><span class="block text-[9px] font-bold tracking-[.28em] text-teal">INSURANCE</span></span>
+    </div>
+    <button onclick="closeMobile()" class="w-9 h-9 rounded-md bg-offwhite flex items-center justify-center" aria-label="Close menu"><i data-lucide="x" class="w-5 h-5"></i></button>
+  </div>
+  <div class="flex-1 overflow-y-auto px-4 py-4 space-y-1 scrollbar-thin">
+    <button class="w-full text-left px-3 py-3 rounded-lg font-bold text-navy nav-goto flex justify-between items-center hover:bg-offwhite" data-route="home">Home <i data-lucide="chevron-right" class="w-4 h-4 text-muted"></i></button>
+    <div class="mob-item border-b border-line/70">
+      <button class="w-full text-left px-3 py-3 font-bold text-navy flex justify-between items-center" onclick="this.parentElement.classList.toggle('open')">Insurance <i data-lucide="chevron-down" class="w-4 h-4 mob-chev text-muted"></i></button>
+      <div class="mob-sub px-3 pb-3 space-y-1">
+        <button class="block w-full text-left px-3 py-2.5 rounded-md text-[14px] hover:bg-offwhite nav-goto" data-route="health">Health Insurance</button>
+        <button class="block w-full text-left px-3 py-2.5 rounded-md text-[14px] hover:bg-offwhite nav-goto" data-route="motor">Motor Insurance</button>
+        <button class="block w-full text-left px-3 py-2.5 rounded-md text-[14px] hover:bg-offwhite nav-goto" data-route="life">Life Insurance</button>
+        <button class="block w-full text-left px-3 py-2.5 rounded-md text-[14px] hover:bg-offwhite nav-goto" data-route="investment">Investment Plans</button>
+        <button class="block w-full text-left px-3 py-2.5 rounded-md text-[14px] hover:bg-offwhite nav-goto" data-route="insurance">View all insurance</button>
+      </div>
+    </div>
+    <div class="mob-item border-b border-line/70">
+      <button class="w-full text-left px-3 py-3 font-bold text-navy flex justify-between items-center" onclick="this.parentElement.classList.toggle('open')">Claims <i data-lucide="chevron-down" class="w-4 h-4 mob-chev text-muted"></i></button>
+      <div class="mob-sub px-3 pb-3 space-y-1">
+        <button class="block w-full text-left px-3 py-2.5 rounded-md text-[14px] hover:bg-offwhite nav-goto" data-route="claims">File a claim</button>
+        <button class="block w-full text-left px-3 py-2.5 rounded-md text-[14px] hover:bg-offwhite nav-goto" data-route="claims" data-anchor="trackClaim">Track claim</button>
+      </div>
+    </div>
+    <button class="w-full text-left px-3 py-3 font-bold text-navy nav-goto hover:bg-offwhite rounded-lg" data-route="about">About LUNA</button>
+    <button class="w-full text-left px-3 py-3 font-bold text-navy nav-goto hover:bg-offwhite rounded-lg" data-route="contact">Contact</button>
+    <button class="w-full text-left px-3 py-3 font-bold text-navy nav-goto hover:bg-offwhite rounded-lg" data-route="home" data-anchor="faq">Help & FAQs</button>
+    <div class="pt-4 space-y-2.5">
+      <button class="btn btn-teal w-full nav-goto" data-route="home" data-anchor="quoteSection">Get a Quote <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+      <button class="btn btn-outline w-full" onclick="closeMobile();openModal('loginModal')"><i data-lucide="user" class="w-4 h-4"></i> Login / Register</button>
+      <a href="tel:18004190000" class="btn w-full bg-navy text-white"><i data-lucide="phone-call" class="w-4 h-4"></i> 1800 419 0000</a>
+    </div>
+    <p class="text-[12px] text-muted pt-4 px-1">Mon–Sat · 9:30 AM – 6:30 PM IST<br>Claims intimation assistance available 24×7</p>
+  </div>
+</aside>
+
+<!-- SEARCH OVERLAY -->
+<div id="searchOverlay" role="dialog" aria-label="Search">
+  <div class="max-w-[640px] mx-auto mt-[10vh] px-4">
+    <div class="bg-white rounded-xl overflow-hidden shadow-card border-t-4 border-gold">
+      <div class="flex items-center gap-3 px-5 py-4 border-b border-line">
+        <i data-lucide="search" class="w-5 h-5 text-teal"></i>
+        <input id="searchInput" type="text" placeholder="Search health, car, term life, NCB, waiting period…" class="flex-1 outline-none text-[15px]" aria-label="Search insurance topics" oninput="renderSearch(this.value)">
+        <button onclick="closeSearch()" class="w-8 h-8 rounded-md bg-offwhite flex items-center justify-center" aria-label="Close search"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div id="searchResults" class="max-h-[380px] overflow-y-auto p-3 scrollbar-thin"></div>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+<!-- ================= HOME PAGE ================= -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero-pattern border-b border-line relative overflow-hidden">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 pt-10 pb-12 lg:pt-16 lg:pb-20 grid lg:grid-cols-[1.05fr_.95fr] gap-10 lg:gap-14 items-center">
+      <div class="reveal revealed">
+        <span class="eyebrow">LUNA Insurance · Indian Marketplace</span>
+        <h1 class="font-display font-semibold text-navy text-[38px] sm:text-[50px] lg:text-[58px] leading-[1.06] mt-4 tracking-tight">Insurance that protects <span class="relative inline-block">what matters<span class="absolute left-0 -bottom-1 w-full h-[5px] bg-gold/70 rounded"></span></span> most.</h1>
+        <p class="text-muted text-[16px] lg:text-[17.5px] mt-5 max-w-[560px]">Compare health, motor, life and investment-linked insurance from leading insurers — with clear policy language, honest guidance and dedicated claims assistance for Indian families.</p>
+        <div class="flex flex-col sm:flex-row gap-3 mt-7">
+          <button class="btn btn-teal btn-lg nav-goto" data-route="home" data-anchor="quoteSection">Get a Quote <i data-lucide="arrow-right" class="w-4.5 h-4.5 w-5 h-5"></i></button>
+          <button class="btn btn-outline btn-lg nav-goto" data-route="home" data-anchor="explore">Explore Insurance</button>
+        </div>
+        <div class="flex flex-wrap gap-x-6 gap-y-2.5 mt-7 text-[13.5px] font-semibold text-navy">
+          <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-teal"></i> Side-by-side comparison</span>
+          <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-teal"></i> IRDAI-aligned disclosures</span>
+          <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-teal"></i> Human claims support</span>
+        </div>
+        <p class="hint mt-4 max-w-[520px]">Insurance is the subject matter of solicitation. Read all policy documents carefully before concluding a sale.</p>
+      </div>
+      <div class="relative reveal revealed">
+        <div class="card overflow-hidden shadow-card">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=70" alt="Indian family protected by LUNA Insurance" class="w-full h-[300px] sm:h-[360px] lg:h-[420px] object-cover">
+            <div class="absolute top-4 left-4 bg-white/95 backdrop-blur rounded-md px-3 py-2 flex items-center gap-2 shadow-subtle border border-line">
+              <span class="w-8 h-8 rounded-md bg-tealLight flex items-center justify-center"><i data-lucide="shield-check" class="w-4 h-4 text-teal"></i></span>
+              <span class="text-left leading-tight"><span class="block text-[12px] font-800 font-bold text-navy">Cashless hospital network*</span><span class="block text-[11.5px] text-muted">Health plans explained clearly</span></span>
+            </div>
+            <div class="absolute bottom-4 right-4 bg-navy text-white rounded-md px-4 py-3 shadow-card border-l-4 border-gold max-w-[240px]">
+              <p class="text-[12px] text-goldSoft font-bold tracking-wide uppercase">Motor claim assisted</p>
+              <p class="text-[13.5px] font-semibold mt-0.5">Survey → Approval → Settlement guidance</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 divide-x divide-line bg-white">
+            <div class="p-3 sm:p-4 text-center"><i data-lucide="heart-pulse" class="w-5 h-5 text-teal mx-auto"></i><p class="text-[12px] sm:text-[13px] font-bold text-navy mt-1">Health</p><p class="text-[11.5px] text-muted hidden sm:block">Family & individual</p></div>
+            <div class="p-3 sm:p-4 text-center"><i data-lucide="car" class="w-5 h-5 text-teal mx-auto"></i><p class="text-[12px] sm:text-[13px] font-bold text-navy mt-1">Motor</p><p class="text-[11.5px] text-muted hidden sm:block">Car & bike</p></div>
+            <div class="p-3 sm:p-4 text-center"><i data-lucide="umbrella" class="w-5 h-5 text-teal mx-auto"></i><p class="text-[12px] sm:text-[13px] font-bold text-navy mt-1">Term Life</p><p class="text-[11.5px] text-muted hidden sm:block">Income protection</p></div>
+          </div>
+        </div>
+        <div class="absolute -left-3 lg:-left-6 top-1/2 -translate-y-1/2 bg-white border border-line rounded-lg shadow-card px-3.5 py-3 hidden sm:flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-full bg-goldSoft flex items-center justify-center"><i data-lucide="file-check-2" class="w-4.5 h-4.5 w-5 h-5 text-navy"></i></span>
+          <span class="leading-tight"><span class="block text-[13px] font-bold text-navy">Policy in minutes</span><span class="block text-[11.5px] text-muted">Digital application</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-line bg-white">
+      <div class="max-w-[1280px] mx-auto px-5 py-3.5 marquee text-[13.5px] font-semibold text-navy2" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Health Insurance</span><span class="text-gold">•</span><span>Car Insurance</span><span class="text-gold">•</span><span>Bike Insurance</span><span class="text-gold">•</span><span>Term Life</span><span class="text-gold">•</span><span>Family Floater</span><span class="text-gold">•</span><span>Travel Cover</span><span class="text-gold">•</span><span>Home Insurance</span><span class="text-gold">•</span><span>Child Plans</span><span class="text-gold">•</span><span>Retirement</span><span class="text-gold">•</span>
+          <span>Health Insurance</span><span class="text-gold">•</span><span>Car Insurance</span><span class="text-gold">•</span><span>Bike Insurance</span><span class="text-gold">•</span><span>Term Life</span><span class="text-gold">•</span><span>Family Floater</span><span class="text-gold">•</span><span>Travel Cover</span><span class="text-gold">•</span><span>Home Insurance</span><span class="text-gold">•</span><span>Child Plans</span><span class="text-gold">•</span><span>Retirement</span><span class="text-gold">•</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE EXPERIENCE -->
+  <section id="quoteSection" class="py-14 lg:py-20 scroll-mt-20">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5">
+      <div class="text-center max-w-[680px] mx-auto reveal">
+        <span class="eyebrow !justify-center mx-auto">Get a Quote</span>
+        <h2 class="font-display font-semibold text-navy text-[30px] sm:text-[38px] mt-3 tracking-tight">A clear quote in under 2 minutes</h2>
+        <p class="text-muted mt-3">Choose a category, answer a few simple questions and see an instant illustrative premium. No spam — only useful guidance.</p>
+      </div>
+      <div class="card shadow-card gold-top mt-8 overflow-hidden reveal reveal-d1">
+        <div class="grid lg:grid-cols-[280px_1fr]">
+          <div class="bg-offwhite border-b lg:border-b-0 lg:border-r border-line p-4 sm:p-5">
+            <p class="text-[12px] font-800 font-bold tracking-[.14em] uppercase text-muted mb-3 px-1">Select category</p>
+            <div class="grid grid-cols-2 lg:grid-cols-1 gap-2" role="tablist" aria-label="Quote categories">
+              <button class="quote-tab active" data-quote-tab="car" role="tab" aria-selected="true"><span class="qt-icon"><i data-lucide="car" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14.5px] text-navy">Car Insurance</span><span class="block text-[12px] text-muted">IDV • NCB • Add-ons</span></span></button>
+              <button class="quote-tab" data-quote-tab="bike" role="tab" aria-selected="false"><span class="qt-icon"><i data-lucide="bike" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14.5px] text-navy">Bike Insurance</span><span class="block text-[12px] text-muted">Two-wheeler cover</span></span></button>
+              <button class="quote-tab" data-quote-tab="health" role="tab" aria-selected="false"><span class="qt-icon"><i data-lucide="heart-pulse" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14.5px] text-navy">Health Insurance</span><span class="block text-[12px] text-muted">Individual & family</span></span></button>
+              <button class="quote-tab" data-quote-tab="life" role="tab" aria-selected="false"><span class="qt-icon"><i data-lucide="umbrella" class="w-5 h-5"></i></span><span><span class="block font-bold text-[14.5px] text-navy">Life Insurance</span><span class="block text-[12px] text-muted">Term protection</span></span></button>
+            </div>
+            <div class="hidden lg:block mt-5 p-3.5 bg-white border border-line rounded-lg">
+              <p class="flex items-center gap-2 text-[13px] font-bold text-navy"><i data-lucide="lock" class="w-4 h-4 text-teal"></i> Your data stays private</p>
+              <p class="text-[12.5px] text-muted mt-1">We use details only to prepare your illustration and arrange a callback if you ask for one.</p>
+            </div>
+          </div>
+          <div class="p-5 sm:p-7">
+            <div class="flex items-center gap-2.5 sm:gap-3 mb-6" id="quoteStepsBar">
+              <div class="step-item active flex items-center gap-2" data-step="1"><span class="step-dot">1</span><span class="text-[13px] font-bold text-navy hidden sm:block">Details</span></div>
+              <div class="step-line"></div>
+              <div class="step-item flex items-center gap-2" data-step="2"><span class="step-dot">2</span><span class="text-[13px] font-bold text-navy hidden sm:block">Profile</span></div>
+              <div class="step-line"></div>
+              <div class="step-item flex items-center gap-2" data-step="3"><span class="step-dot">3</span><span class="text-[13px] font-bold text-navy hidden sm:block">Your Quote</span></div>
+            </div>
+            <div id="quoteStep1">
+              <div id="dynamicFields"></div>
+            </div>
+            <div id="quoteStep2" class="hidden">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div><label class="label" for="qName">Full name *</label><input id="qName" class="input" placeholder="e.g., Priya Sharma" autocomplete="name"></div>
+                <div><label class="label" for="qMobile">Mobile number *</label><input id="qMobile" class="input" placeholder="10-digit mobile" inputmode="numeric" maxlength="10" autocomplete="tel"><p class="hint mt-1">We send your illustration on SMS & WhatsApp (opt-in).</p></div>
+                <div><label class="label" for="qEmail">Email</label><input id="qEmail" type="email" class="input" placeholder="you@example.com" autocomplete="email"></div>
+                <div><label class="label" for="qPin">Pincode *</label><input id="qPin" class="input" placeholder="e.g., 110001" inputmode="numeric" maxlength="6" autocomplete="postal-code"></div>
+              </div>
+              <label class="flex gap-2.5 items-start mt-4 text-[13px] text-muted cursor-pointer"><input type="checkbox" id="qConsent" class="mt-1 accent-[#0F766E]" checked> I agree to be contacted by LUNA Insurance about my quote and understand premiums shown are illustrative. Final premium is as per insurer underwriting.</label>
+            </div>
+            <div id="quoteStep3" class="hidden">
+              <div id="quoteResult"></div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 mt-6 pt-5 border-t border-line">
+              <button id="quoteBack" class="btn btn-outline hidden" onclick="quoteNav(-1)"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back</button>
+              <div class="flex-1"></div>
+              <div class="bg-tealLight border border-[#BFD9D5] rounded-lg px-4 py-2.5 flex items-center gap-3">
+                <span class="text-[12px] font-bold text-teal uppercase tracking-wide">Live estimate</span>
+                <span id="liveEstimate" class="font-display font-bold text-[20px] text-navy">₹ —</span>
+                <span class="text-[11.5px] text-muted">/ year*</span>
+              </div>
+              <button id="quoteNext" class="btn btn-teal btn-lg" onclick="quoteNav(1)">Continue <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+            </div>
+            <p class="hint mt-3">*Illustrative estimate for comparison. Actual premium depends on insurer, variant, medical underwriting, inspection and discounts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORE INSURANCE -->
+  <section id="explore" class="py-14 lg:py-20 bg-offwhite border-y border-line scroll-mt-20">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 reveal">
+        <div class="max-w-[620px]">
+          <span class="eyebrow">Explore Insurance</span>
+          <h2 class="font-display font-semibold text-navy text-[30px] sm:text-[38px] mt-3 tracking-tight">Everyday protection, organised clearly</h2>
+          <p class="text-muted mt-3">Eight core needs Indian households search for — each explained in plain language with inclusions, exclusions and documents.</p>
+        </div>
+        <button class="btn btn-navy nav-goto shrink-0" data-route="insurance">View all products <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8" id="exploreGrid"></div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section id="why" class="py-14 lg:py-20 scroll-mt-20">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 grid lg:grid-cols-[380px_1fr] gap-10">
+      <div class="lg:sticky lg:top-24 self-start reveal">
+        <span class="eyebrow">Why LUNA Insurance</span>
+        <h2 class="font-display font-semibold text-navy text-[30px] sm:text-[38px] mt-3 tracking-tight leading-tight">Built for clarity, service and trust</h2>
+        <p class="text-muted mt-4">We do not make tall claims. We focus on what you can verify: transparent information, careful comparisons and dependable servicing.</p>
+        <div class="card mt-6 p-5 bg-navy !border-navy text-white">
+          <p class="flex items-center gap-2 font-bold text-[14.5px]"><i data-lucide="scale" class="w-5 h-5 text-gold"></i> Compliance-first approach</p>
+          <p class="text-[13.5px] text-white/75 mt-2">Product summaries follow IRDAI norms on benefit illustrations, waiting periods, exclusions and free-look provisions. Always read the policy wording before purchase.</p>
+          <button class="btn btn-gold btn-sm mt-4" onclick="openModal('legalModal');showLegal('disclosure')">Read disclosures</button>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="card card-hover p-6 reveal"><span class="icon-tile"><i data-lucide="file-text" class="w-5 h-5"></i></span><h3 class="font-bold text-navy text-[16.5px] mt-4">Clear policy information</h3><p class="text-[14px] text-muted mt-2">Inclusions, exclusions, waiting periods and claim steps written in plain English — with Hindi support on call.</p><p class="text-[13px] font-bold text-teal mt-3 flex items-center gap-1">Sample wording explained <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></p></div>
+        <div class="card card-hover p-6 reveal reveal-d1"><span class="icon-tile"><i data-lucide="columns-3" class="w-5 h-5"></i></span><h3 class="font-bold text-navy text-[16.5px] mt-4">Honest side-by-side compare</h3><p class="text-[14px] text-muted mt-2">Compare covers, sub-limits, deductibles and add-ons on one screen — not just the premium.</p><button class="text-[13px] font-bold text-teal mt-3 flex items-center gap-1 nav-goto" data-route="home" data-anchor="compare">Try comparison <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+        <div class="card card-hover p-6 reveal"><span class="icon-tile"><i data-lucide="life-buoy" class="w-5 h-5"></i></span><h3 class="font-bold text-navy text-[16.5px] mt-4">Claims guidance, end-to-end</h3><p class="text-[14px] text-muted mt-2">Intimation checklists, document help and escalation support — so you are never alone at claim time.</p><button class="text-[13px] font-bold text-teal mt-3 flex items-center gap-1 nav-goto" data-route="claims">How claims work <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+        <div class="card card-hover p-6 reveal reveal-d1"><span class="icon-tile"><i data-lucide="lock-keyhole" class="w-5 h-5"></i></span><h3 class="font-bold text-navy text-[16.5px] mt-4">Privacy & secure handling</h3><p class="text-[14px] text-muted mt-2">KYC and health details are handled with consent-based access and encrypted storage practices.</p><button class="text-[13px] font-bold text-teal mt-3 flex items-center gap-1" onclick="openModal('legalModal');showLegal('privacy')">Privacy policy <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+        <div class="card card-hover p-6 reveal"><span class="icon-tile"><i data-lucide="languages" class="w-5 h-5"></i></span><h3 class="font-bold text-navy text-[16.5px] mt-4">Support in your language</h3><p class="text-[14px] text-muted mt-2">Talk to advisors in English, Hindi and major regional languages on request — by phone, chat or callback.</p><button class="text-[13px] font-bold text-teal mt-3 flex items-center gap-1" onclick="openModal('callbackModal')">Request callback <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+        <div class="card card-hover p-6 reveal reveal-d1"><span class="icon-tile"><i data-lucide="bell-ring" class="w-5 h-5"></i></span><h3 class="font-bold text-navy text-[16.5px] mt-4">Renewal & service reminders</h3><p class="text-[14px] text-muted mt-2">Timely nudges for renewals, NCB protection, nominee updates and health check-up benefits.</p><button class="text-[13px] font-bold text-teal mt-3 flex items-center gap-1 nav-goto" data-route="contact">Set a reminder <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="py-14 lg:py-20 bg-offwhite border-y border-line scroll-mt-20">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5">
+      <div class="text-center max-w-[640px] mx-auto reveal">
+        <span class="eyebrow mx-auto">How it works</span>
+        <h2 class="font-display font-semibold text-navy text-[30px] sm:text-[38px] mt-3 tracking-tight">From confusion to covered, in four steps</h2>
+      </div>
+      <div class="how-wrap relative mt-12 reveal">
+        <div class="how-connector hidden lg:block"></div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 relative">
+          <div class="card p-6 text-center reveal"><div class="how-num mx-auto">1</div><span class="inline-flex mt-4 w-10 h-10 rounded-lg bg-tealLight items-center justify-center"><i data-lucide="clipboard-list" class="w-5 h-5 text-teal"></i></span><h3 class="font-bold text-navy mt-3">Tell us your need</h3><p class="text-[13.5px] text-muted mt-2">Answer 4–6 simple questions about your car, health, family or income goals.</p></div>
+          <div class="card p-6 text-center reveal reveal-d1"><div class="how-num mx-auto">2</div><span class="inline-flex mt-4 w-10 h-10 rounded-lg bg-tealLight items-center justify-center"><i data-lucide="scale" class="w-5 h-5 text-teal"></i></span><h3 class="font-bold text-navy mt-3">Compare curated options</h3><p class="text-[13.5px] text-muted mt-2">See covers, exclusions and premiums side-by-side with advisor notes.</p></div>
+          <div class="card p-6 text-center reveal reveal-d2"><div class="how-num mx-auto">3</div><span class="inline-flex mt-4 w-10 h-10 rounded-lg bg-tealLight items-center justify-center"><i data-lucide="mouse-pointer-click" class="w-5 h-5 text-teal"></i></span><h3 class="font-bold text-navy mt-3">Choose & apply online</h3><p class="text-[13.5px] text-muted mt-2">Complete KYC, inspection or medicals digitally with guided help.</p></div>
+          <div class="card p-6 text-center reveal reveal-d3"><div class="how-num mx-auto">4</div><span class="inline-flex mt-4 w-10 h-10 rounded-lg bg-tealLight items-center justify-center"><i data-lucide="hand-heart" class="w-5 h-5 text-teal"></i></span><h3 class="font-bold text-navy mt-3">Get claims support</h3><p class="text-[13.5px] text-muted mt-2">Track renewals and claims from one dashboard with human backup.</p></div>
+        </div>
+      </div>
+      <div class="text-center mt-8"><button class="btn btn-teal nav-goto" data-route="home" data-anchor="quoteSection">Start with a quote <i data-lucide="arrow-right" class="w-4 h-4"></i></button></div>
+    </div>
+  </section>
+
+  <!-- DIGITAL EXPERIENCE -->
+  <section id="digital" class="py-14 lg:py-20 scroll-mt-20">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="flex justify-center reveal order-2 lg:order-1">
+        <div class="flex gap-5 items-start">
+          <div class="phone hidden sm:block">
+            <div class="phone-screen">
+              <div class="bg-navy text-white px-4 pt-5 pb-4">
+                <p class="text-[11px] text-goldSoft font-bold tracking-widest">LUNA · MY POLICIES</p>
+                <p class="font-bold text-[16px] mt-1">Good morning, Priya</p>
+                <div class="grid grid-cols-2 gap-2 mt-3">
+                  <div class="bg-white/10 rounded-lg p-2.5 border border-white/15"><p class="text-[10.5px] text-white/70">Health cover</p><p class="font-bold text-[14px]">₹10,00,000</p></div>
+                  <div class="bg-white/10 rounded-lg p-2.5 border border-white/15"><p class="text-[10.5px] text-white/70">Term cover</p><p class="font-bold text-[14px]">₹1 Cr</p></div>
+                </div>
+              </div>
+              <div class="p-3.5 space-y-2.5 flex-1 bg-offwhite">
+                <div class="bg-white border border-line rounded-lg p-3 flex items-center gap-2.5"><span class="w-8 h-8 rounded-md bg-tealLight flex items-center justify-center"><i data-lucide="car" class="w-4 h-4 text-teal"></i></span><div class="flex-1"><p class="text-[12.5px] font-bold text-navy">Car · HR26 DK 4521</p><p class="text-[11px] text-teal font-semibold">Renewal due in 18 days</p></div></div>
+                <div class="bg-white border border-line rounded-lg p-3"><p class="text-[12px] font-bold text-navy flex items-center gap-1.5"><i data-lucide="activity" class="w-3.5 h-3.5 text-teal"></i> Claim LUNA-248190</p><div class="h-1.5 bg-line rounded-full mt-2 overflow-hidden"><div class="h-full w-3/4 bg-teal rounded-full"></div></div><p class="text-[11px] text-muted mt-1.5">Survey done · Approval in progress</p></div>
+                <div class="bg-navy rounded-lg p-3 text-white flex justify-between items-center"><div><p class="text-[12px] font-bold">Documents vault</p><p class="text-[10.5px] text-white/70">8 files · KYC verified</p></div><i data-lucide="folder-lock" class="w-5 h-5 text-gold"></i></div>
+              </div>
+              <div class="grid grid-cols-4 border-t border-line bg-white py-2.5 text-center text-[10px] font-bold text-muted"><span class="text-teal">Home</span><span>Policies</span><span>Claims</span><span>Help</span></div>
+            </div>
+          </div>
+          <div class="space-y-4 pt-6">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=500&q=70" alt="Digital health consultation" class="w-[220px] lg:w-[250px] h-[160px] object-cover rounded-lg border border-line shadow-subtle">
+            <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=500&q=70" alt="Car covered under motor insurance" class="w-[220px] lg:w-[250px] h-[160px] object-cover rounded-lg border border-line shadow-subtle">
+            <div class="bg-goldSoft border border-gold/40 rounded-lg p-3.5 w-[220px] lg:w-[250px]"><p class="text-[12.5px] font-bold text-navy flex items-center gap-1.5"><i data-lucide="zap" class="w-4 h-4"></i> One-tap intimation</p><p class="text-[12px] text-navy/70 mt-1">File motor & health claims with photos and hospital details.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal order-1 lg:order-2">
+        <span class="eyebrow">Digital Experience</span>
+        <h2 class="font-display font-semibold text-navy text-[30px] sm:text-[38px] mt-3 tracking-tight">Your insurance, organised in one calm place</h2>
+        <p class="text-muted mt-4">Track policies, renewals, nominees and claims without paperwork chaos. Everything is backed by a real advisor when you need one.</p>
+        <div class="flex gap-2 mt-5 flex-wrap" role="tablist" aria-label="Digital personas">
+          <button class="tab-pill active" onclick="switchPersona(this,'ind')">For Individuals</button>
+          <button class="tab-pill" onclick="switchPersona(this,'fam')">For Families</button>
+          <button class="tab-pill" onclick="switchPersona(this,'biz')">For Businesses</button>
+        </div>
+        <div id="persona-ind" class="persona mt-5 space-y-3">
+          <div class="flex gap-3"><span class="icon-tile !w-10 !h-10 shrink-0"><i data-lucide="layout-dashboard" class="w-4.5 h-4.5 w-5 h-5"></i></span><div><p class="font-bold text-navy text-[15px]">Single dashboard</p><p class="text-[13.5px] text-muted">Health, motor and life policies with renewal dates and premium receipts.</p></div></div>
+          <div class="flex gap-3"><span class="icon-tile !w-10 !h-10 shrink-0"><i data-lucide="folder-check" class="w-5 h-5"></i></span><div><p class="font-bold text-navy text-[15px]">Document vault</p><p class="text-[13.5px] text-muted">RC, KYC, prescriptions and policy PDFs stored with consent-based access.</p></div></div>
+          <div class="flex gap-3"><span class="icon-tile !w-10 !h-10 shrink-0"><i data-lucide="siren" class="w-5 h-5"></i></span><div><p class="font-bold text-navy text-[15px]">Claim intimation in minutes</p><p class="text-[13.5px] text-muted">Guided forms, photo upload and hospital / garage assistance.</p></div></div>
+        </div>
+        <div id="persona-fam" class="persona mt-5 space-y-3 hidden">
+          <div class="flex gap-3"><span class="icon-tile !w-10 !h-10 shrink-0"><i data-lucide="users" class="w-5 h-5"></i></span><div><p class="font-bold text-navy text-[15px]">Family floater view</p><p class="text-[13.5px] text-muted">See shared cover, individual utilization and restoration benefits.</p></div></div>
+          <div class="flex gap-3"><span class="icon-tile !w-10 !h-10 shrink-0"><i data-lucide="baby" class="w-5 h-5"></i></span><div><p class="font-bold text-navy text-[15px]">Milestone planning</p><p class="text-[13.5px] text-muted">Child education and health check-up reminders for parents.</p></div></div>
+          <div class="flex gap-3"><span class="icon-tile !w-10 !h-10 shrink-0"><i data-lucide="contact" class="w-5 h-5"></i></span><div><p class="font-bold text-navy text-[15px]">Nominee hygiene</p><p class="text-[13.5px] text-muted">Prompts to update nominees after marriage, birth or address change.</p></div></div>
+        </div>
+        <div id="persona-biz" class="persona mt-5 space-y-3 hidden">
+          <div class="flex gap-3"><span class="icon-tile !w-10 !h-10 shrink-0"><i data-lucide="building-2" class="w-5 h-5"></i></span><div><p class="font-bold text-navy text-[15px]">Group covers & endorsements</p><p class="text-[13.5px] text-muted">Add / delete employees, download e-cards and track group claims.</p></div></div>
+          <div class="flex gap-3"><span class="icon-tile !w-10 !h-10 shrink-0"><i data-lucide="receipt" class="w-5 h-5"></i></span><div><p class="font-bold text-navy text-[15px]">GST invoices & reports</p><p class="text-[13.5px] text-muted">Clean premium statements for finance and audit teams.</p></div></div>
+        </div>
+        <div class="flex flex-wrap gap-3 mt-6">
+          <button class="btn btn-navy" onclick="toast('App preview coming to your email after registration.','success')"><i data-lucide="smartphone" class="w-4 h-4"></i> Explore dashboard</button>
+          <button class="btn btn-outline" onclick="openModal('callbackModal')">Book a demo call</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section id="compare" class="py-14 lg:py-20 bg-offwhite border-y border-line scroll-mt-20">
+    <div class="max-w-[1100px] mx-auto px-4 sm:px-5">
+      <div class="text-center reveal">
+        <span class="eyebrow mx-auto">Compare & Decide</span>
+        <h2 class="font-display font-semibold text-navy text-[30px] sm:text-[38px] mt-3 tracking-tight">Compare what actually matters</h2>
+        <p class="text-muted mt-3 max-w-[600px] mx-auto">Premiums are only one column. Toggle categories to see covers, limits and waiting periods side-by-side.</p>
+      </div>
+      <div class="flex justify-center gap-2 mt-6 flex-wrap reveal">
+        <button class="tab-pill active" data-cmp="health" onclick="renderCompare('health',this)">Health</button>
+        <button class="tab-pill" data-cmp="term" onclick="renderCompare('term',this)">Term Life</button>
+        <button class="tab-pill" data-cmp="motor" onclick="renderCompare('motor',this)">Motor</button>
+      </div>
+      <div class="card shadow-card mt-6 overflow-hidden reveal reveal-d1">
+        <div class="overflow-x-auto"><table class="cmp-table min-w-[640px]" id="compareTable" aria-label="Plan comparison"></table></div>
+        <div class="px-5 py-4 bg-white border-t border-line flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p class="text-[12.5px] text-muted">Illustrative feature matrix for education. Insurer wordings prevail. *Starting premiums vary by age, city and variant.</p>
+          <button class="btn btn-teal btn-sm nav-goto" data-route="home" data-anchor="quoteSection">Get personalised quotes</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLAIMS STRIP -->
+  <section class="py-14 lg:py-16 bg-navy text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[.06] dot-grid"></div>
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 relative grid lg:grid-cols-[1fr_380px] gap-8 items-center">
+      <div class="reveal">
+        <span class="eyebrow on-dark">Claims Support</span>
+        <h2 class="font-display font-semibold text-[30px] sm:text-[38px] mt-3 tracking-tight">When you claim, we stand next to you</h2>
+        <div class="grid sm:grid-cols-3 gap-4 mt-7">
+          <div class="bg-white/[.06] border border-white/15 rounded-lg p-4"><i data-lucide="file-plus-2" class="w-6 h-6 text-gold"></i><p class="font-bold mt-2.5 text-[15px]">File in minutes</p><p class="text-white/70 text-[13px] mt-1">Guided intimation with document checklist.</p></div>
+          <div class="bg-white/[.06] border border-white/15 rounded-lg p-4"><i data-lucide="radar" class="w-6 h-6 text-gold"></i><p class="font-bold mt-2.5 text-[15px]">Track transparently</p><p class="text-white/70 text-[13px] mt-1">Stage-wise updates on SMS & dashboard.</p></div>
+          <div class="bg-white/[.06] border border-white/15 rounded-lg p-4"><i data-lucide="phone-call" class="w-6 h-6 text-gold"></i><p class="font-bold mt-2.5 text-[15px]">Talk to a human</p><p class="text-white/70 text-[13px] mt-1">Escalation help for delays & queries.</p></div>
+        </div>
+      </div>
+      <div class="bg-white text-ink rounded-xl p-6 shadow-card reveal reveal-d1" id="homeTrack">
+        <p class="font-bold text-navy text-[16px] flex items-center gap-2"><i data-lucide="search-check" class="w-5 h-5 text-teal"></i> Track your claim</p>
+        <p class="text-[13px] text-muted mt-1">Enter claim ID (e.g., LUNA-248190)</p>
+        <div class="flex gap-2 mt-3">
+          <input id="homeClaimId" class="input uppercase" placeholder="LUNA-XXXXXX" aria-label="Claim ID">
+          <button class="btn btn-navy shrink-0" onclick="trackClaim('homeClaimId','homeClaimResult')">Track</button>
+        </div>
+        <div id="homeClaimResult" class="mt-4"></div>
+        <button class="btn btn-outline w-full mt-4 nav-goto" data-route="claims">Go to Claims Centre <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section id="partners" class="py-14 lg:py-20 scroll-mt-20">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5">
+      <div class="flex flex-col lg:flex-row justify-between lg:items-end gap-4 reveal">
+        <div><span class="eyebrow">Insurer Network</span>
+        <h2 class="font-display font-semibold text-navy text-[30px] sm:text-[38px] mt-3 tracking-tight">A marketplace built on verified partnerships</h2>
+        <p class="text-muted mt-3 max-w-[640px]">We list only insurers whose product wordings and claim processes we can explain clearly. Partner showcase below is kept neutral and editable for verified additions.</p></div>
+        <button class="btn btn-outline shrink-0" onclick="openModal('partnerModal')">Become a partner</button>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8 reveal reveal-d1">
+        <div class="partner-slot"><i data-lucide="shield" class="w-6 h-6 text-muted"></i><p class="text-[13px] font-bold text-navy">Insurer Partner Slot</p><p class="text-[12px] text-muted">Logo area · 180 × 64</p></div>
+        <div class="partner-slot"><i data-lucide="shield" class="w-6 h-6 text-muted"></i><p class="text-[13px] font-bold text-navy">Insurer Partner Slot</p><p class="text-[12px] text-muted">Logo area · 180 × 64</p></div>
+        <div class="partner-slot"><i data-lucide="building-2" class="w-6 h-6 text-muted"></i><p class="text-[13px] font-bold text-navy">Health TPA Slot</p><p class="text-[12px] text-muted">Cashless network partner</p></div>
+        <div class="partner-slot"><i data-lucide="wrench" class="w-6 h-6 text-muted"></i><p class="text-[13px] font-bold text-navy">Garage Network Slot</p><p class="text-[12px] text-muted">Motor service partner</p></div>
+        <div class="partner-slot"><i data-lucide="heart-pulse" class="w-6 h-6 text-muted"></i><p class="text-[13px] font-bold text-navy">Hospital Network Slot</p><p class="text-[12px] text-muted">Editable · City-wise list</p></div>
+        <div class="partner-slot"><i data-lucide="landmark" class="w-6 h-6 text-muted"></i><p class="text-[13px] font-bold text-navy">Bank / NBFC Slot</p><p class="text-[12px] text-muted">Premium finance partner</p></div>
+        <div class="partner-slot"><i data-lucide="stethoscope" class="w-6 h-6 text-muted"></i><p class="text-[13px] font-bold text-navy">Diagnostics Slot</p><p class="text-[12px] text-muted">Pre-policy check-up</p></div>
+        <div class="partner-slot !border-teal !bg-tealLight"><i data-lucide="plus-circle" class="w-6 h-6 text-teal"></i><p class="text-[13px] font-bold text-navy">Your logo here</p><button class="text-[12.5px] font-bold text-teal underline" onclick="openModal('partnerModal')">Request listing →</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section id="insights" class="py-14 lg:py-20 bg-offwhite border-y border-line scroll-mt-20">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5">
+      <div class="flex flex-col lg:flex-row justify-between lg:items-end gap-4 reveal">
+        <div><span class="eyebrow">Learn with LUNA</span><h2 class="font-display font-semibold text-navy text-[30px] sm:text-[38px] mt-3 tracking-tight">Insurance, explained without jargon</h2></div>
+        <button class="btn btn-outline" onclick="toast('Full knowledge centre opening soon in this preview.','success')">View all guides</button>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5 mt-8">
+        <article class="card card-hover overflow-hidden article-card reveal cursor-pointer" onclick="openArticle(0)"><div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=700&q=70" alt="Understanding waiting periods" class="w-full h-[190px] object-cover"></div><div class="p-5"><span class="text-[11.5px] font-800 font-bold tracking-widest uppercase text-teal bg-tealLight px-2.5 py-1 rounded">Health · 6 min read</span><h3 class="font-bold text-navy text-[17px] mt-3 leading-snug">Waiting periods, room rent limits & deductibles — what they really mean</h3><p class="text-[13.5px] text-muted mt-2">Why two ₹5 lakh policies can behave very differently at claim time.</p><span class="text-[13.5px] font-bold text-navy mt-3 inline-flex items-center gap-1">Read guide <i data-lucide="arrow-right" class="w-4 h-4 text-teal"></i></span></div></article>
+        <article class="card card-hover overflow-hidden article-card reveal reveal-d1 cursor-pointer" onclick="openArticle(1)"><div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=70" alt="Car insurance IDV explained" class="w-full h-[190px] object-cover"></div><div class="p-5"><span class="text-[11.5px] font-bold tracking-widest uppercase text-teal bg-tealLight px-2.5 py-1 rounded">Motor · 5 min read</span><h3 class="font-bold text-navy text-[17px] mt-3 leading-snug">IDV, NCB and zero-depreciation: get your car renewal right</h3><p class="text-[13.5px] text-muted mt-2">A practical checklist before you click “renew” this year.</p><span class="text-[13.5px] font-bold text-navy mt-3 inline-flex items-center gap-1">Read guide <i data-lucide="arrow-right" class="w-4 h-4 text-teal"></i></span></div></article>
+        <article class="card card-hover overflow-hidden article-card reveal reveal-d2 cursor-pointer" onclick="openArticle(2)"><div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=700&q=70" alt="Term insurance planning" class="w-full h-[190px] object-cover"></div><div class="p-5"><span class="text-[11.5px] font-bold tracking-widest uppercase text-teal bg-tealLight px-2.5 py-1 rounded">Life · 7 min read</span><h3 class="font-bold text-navy text-[17px] mt-3 leading-snug">How much term cover is enough? The 15× rule and beyond</h3><p class="text-[13.5px] text-muted mt-2">Loans, goals and dependents — a calm way to size your cover.</p><span class="text-[13.5px] font-bold text-navy mt-3 inline-flex items-center gap-1">Read guide <i data-lucide="arrow-right" class="w-4 h-4 text-teal"></i></span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section id="support" class="py-14 lg:py-20 scroll-mt-20">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5">
+      <div class="text-center max-w-[620px] mx-auto reveal"><span class="eyebrow mx-auto">Customer Support</span><h2 class="font-display font-semibold text-navy text-[30px] sm:text-[38px] mt-3 tracking-tight">Real humans, when it matters</h2><p class="text-muted mt-3">Claims, renewals or plain confusion — reach us on the channel you prefer.</p></div>
+      <div class="grid md:grid-cols-3 gap-4 mt-8">
+        <div class="card card-hover p-6 reveal text-center"><span class="icon-tile mx-auto !w-12 !h-12"><i data-lucide="siren" class="w-6 h-6"></i></span><h3 class="font-bold text-navy mt-4">Claims Support · 24×7</h3><p class="text-[13.5px] text-muted mt-2">Accident, hospitalisation or emergency? Intimate first, we handle the rest.</p><p class="font-display font-bold text-navy text-[20px] mt-3">1800 419 0000</p><div class="flex gap-2 justify-center mt-4"><a href="tel:18004190000" class="btn btn-navy btn-sm">Call now</a><button class="btn btn-outline btn-sm nav-goto" data-route="claims">File online</button></div></div>
+        <div class="card card-hover p-6 reveal reveal-d1 text-center"><span class="icon-tile mx-auto !w-12 !h-12"><i data-lucide="messages-square" class="w-6 h-6"></i></span><h3 class="font-bold text-navy mt-4">General Inquiries</h3><p class="text-[13.5px] text-muted mt-2">New policies, renewals, endorsements and premium receipts.</p><p class="font-bold text-navy mt-3 text-[15px]">care@lunainsurance.example</p><div class="flex gap-2 justify-center mt-4"><button class="btn btn-teal btn-sm" onclick="toggleChat(true)">Chat now</button><button class="btn btn-outline btn-sm" onclick="openModal('callbackModal')">Callback</button></div></div>
+        <div class="card card-hover p-6 reveal reveal-d2 text-center"><span class="icon-tile mx-auto !w-12 !h-12"><i data-lucide="map-pin" class="w-6 h-6"></i></span><h3 class="font-bold text-navy mt-4">Visit / Video KYC</h3><p class="text-[13.5px] text-muted mt-2">Meet an advisor in New Delhi, Mumbai or Bengaluru — or on video call.</p><p class="font-bold text-navy mt-3 text-[15px]">Mon–Sat · 9:30 AM – 6:30 PM</p><div class="flex gap-2 justify-center mt-4"><button class="btn btn-outline btn-sm nav-goto" data-route="contact">Find us</button><button class="btn btn-outline btn-sm" onclick="openModal('callbackModal')">Book slot</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-14 lg:py-20 bg-offwhite border-t border-line scroll-mt-20">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 grid lg:grid-cols-[360px_1fr] gap-10">
+      <div class="reveal">
+        <span class="eyebrow">FAQs</span>
+        <h2 class="font-display font-semibold text-navy text-[30px] sm:text-[36px] mt-3 tracking-tight">Common questions, honest answers</h2>
+        <p class="text-muted mt-3 text-[15px]">Short, factual answers based on standard IRDAI norms and market practice. For policy-specific queries, talk to us.</p>
+        <div class="card p-5 mt-6"><p class="font-bold text-navy text-[15px]">Still unsure?</p><p class="text-[13.5px] text-muted mt-1">Get a free 10-minute guidance call — no sales pressure.</p><button class="btn btn-teal btn-sm mt-3 w-full" onclick="openModal('callbackModal')">Request guidance call</button></div>
+      </div>
+      <div class="space-y-3" id="homeFaq"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= INSURANCE OVERVIEW ================= -->
+<div id="page-insurance" class="page">
+  <section class="bg-navy text-white py-12 lg:py-16 relative overflow-hidden"><div class="absolute inset-0 opacity-[.07] dot-grid"></div>
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 relative">
+      <nav class="breadcrumb text-[13px] text-white/60 flex gap-2" aria-label="Breadcrumb"><button class="nav-goto hover:text-goldSoft" data-route="home">Home</button><span>/</span><span class="text-goldSoft font-semibold">Insurance</span></nav>
+      <h1 class="font-display font-semibold text-[32px] sm:text-[44px] mt-3 tracking-tight">All insurance, one clear marketplace</h1>
+      <p class="text-white/75 max-w-[640px] mt-3">Health, motor, life, travel, home and business covers — each with plain-language benefits, exclusions and claim steps.</p>
+      <div class="flex flex-wrap gap-3 mt-6"><button class="btn btn-gold nav-goto" data-route="home" data-anchor="quoteSection">Get a Quote</button><button class="btn btn-white-outline nav-goto" data-route="home" data-anchor="compare">Compare plans</button></div>
+    </div>
+  </section>
+  <section class="py-12"><div class="max-w-[1280px] mx-auto px-4 sm:px-5"><div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="allProductsGrid"></div>
+    <div class="card mt-8 p-6 sm:p-8 grid lg:grid-cols-2 gap-6 items-center bg-offwhite"><div><h2 class="font-display font-semibold text-navy text-[24px]">Not sure where to start?</h2><p class="text-muted mt-2 text-[15px]">Most Indian households prioritise in this order: term life (if dependents) → health → motor (mandatory) → home/travel → investments. We will help you sequence based on your stage.</p></div><div class="flex flex-wrap gap-3 lg:justify-end"><button class="btn btn-teal" onclick="openModal('callbackModal')">Talk to an advisor</button><button class="btn btn-outline nav-goto" data-route="home" data-anchor="how">See how it works</button></div></div>
+  </div></section>
+</div>
+
+<!-- ================= HEALTH ================= -->
+<div id="page-health" class="page">
+  <section class="bg-navy text-white py-12 lg:py-16 relative overflow-hidden"><div class="absolute inset-0 opacity-[.07] dot-grid"></div>
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 relative grid lg:grid-cols-2 gap-8 items-center">
+      <div><nav class="breadcrumb text-[13px] text-white/60 flex gap-2"><button class="nav-goto hover:text-goldSoft" data-route="home">Home</button><span>/</span><span class="text-goldSoft font-semibold">Health Insurance</span></nav>
+      <h1 class="font-display font-semibold text-[32px] sm:text-[44px] mt-3 tracking-tight">Health cover your family can actually use</h1>
+      <p class="text-white/75 mt-3 max-w-[520px]">Cashless hospitalisation, day-care, restoration benefits and waiting periods — explained before you buy, supported at claim time.</p>
+      <div class="flex flex-wrap gap-3 mt-6"><button class="btn btn-gold" onclick="goQuote('health')">Check health premium</button><button class="btn btn-white-outline" onclick="document.getElementById('healthCalc').scrollIntoView({behavior:'smooth'})">Estimate cover</button></div></div>
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=70" alt="Doctor consulting patient" class="rounded-lg border border-white/15 shadow-card h-[260px] lg:h-[300px] w-full object-cover">
+    </div>
+  </section>
+  <section class="py-12"><div class="max-w-[1280px] mx-auto px-4 sm:px-5 grid lg:grid-cols-3 gap-4">
+    <div class="card card-hover p-6"><span class="icon-tile"><i data-lucide="user" class="w-5 h-5"></i></span><h3 class="font-bold text-navy mt-3">Individual Health</h3><p class="text-[13.5px] text-muted mt-2">Dedicated sum insured per person. Ideal when one member needs higher cover.</p><button class="text-teal font-bold text-[13.5px] mt-3" onclick="openPolicy('health')">Know more →</button></div>
+    <div class="card card-hover p-6"><span class="icon-tile"><i data-lucide="users" class="w-5 h-5"></i></span><h3 class="font-bold text-navy mt-3">Family Floater</h3><p class="text-[13.5px] text-muted mt-2">One shared cover for 2 adults + kids. Cost-effective for young families.</p><button class="text-teal font-bold text-[13.5px] mt-3" onclick="openPolicy('health')">Know more →</button></div>
+    <div class="card card-hover p-6"><span class="icon-tile"><i data-lucide="heart-handshake" class="w-5 h-5"></i></span><h3 class="font-bold text-navy mt-3">Senior Citizen & Top-ups</h3><p class="text-[13.5px] text-muted mt-2">Covers for 60+ and super top-ups to boost base cover affordably.</p><button class="text-teal font-bold text-[13.5px] mt-3" onclick="openPolicy('health')">Know more →</button></div>
+  </div></section>
+  <section id="healthCalc" class="pb-12 scroll-mt-24"><div class="max-w-[1000px] mx-auto px-4 sm:px-5">
+    <div class="card shadow-card gold-top p-6 sm:p-8">
+      <h2 class="font-display font-semibold text-navy text-[24px]">Health premium estimator</h2>
+      <p class="text-muted text-[14px] mt-1">Move sliders to see an illustrative annual premium.</p>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div><label class="label">Sum insured: <span id="hCoverLbl" class="text-teal">₹10,00,000</span></label><input type="range" id="hCover" min="3" max="100" value="10" oninput="calcHealth()"><div class="flex justify-between text-[11.5px] text-muted"><span>₹3L</span><span>₹1Cr</span></div></div>
+        <div><label class="label">Eldest member age: <span id="hAgeLbl" class="text-teal">35 yrs</span></label><input type="range" id="hAge" min="18" max="70" value="35" oninput="calcHealth()"></div>
+        <div><label class="label">Family size</label><select id="hFam" class="select" onchange="calcHealth()"><option value="1">Self only</option><option value="1.7">Self + Spouse</option><option value="2.1" selected>2 Adults + 1 Kid</option><option value="2.5">2 Adults + 2 Kids</option><option value="2.8">Family + 1 Parent</option></select></div>
+        <div><label class="label">City tier</label><select id="hCity" class="select" onchange="calcHealth()"><option value="1.15">Metro (Delhi/Mumbai/Bengaluru)</option><option value="1" selected>Tier-1 / Tier-2</option><option value="0.9">Tier-3 / Rural</option></select></div>
+      </div>
+      <div class="mt-6 bg-offwhite border border-line rounded-lg p-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div><p class="text-[12px] font-bold tracking-widest uppercase text-muted">Illustrative premium</p><p class="font-display font-bold text-navy text-[32px]" id="hOut">₹18,400<span class="text-[15px] font-sans font-semibold text-muted"> / year</span></p><p class="text-[12px] text-muted">≈ <span id="hOutM">₹1,533</span>/month · Inclusive of standard assumptions, before medical loading.</p></div>
+        <button class="btn btn-teal" onclick="goQuote('health')">Get exact quote <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-4 mt-6">
+      <div class="card p-6"><h3 class="font-bold text-navy flex items-center gap-2"><i data-lucide="clock" class="w-5 h-5 text-teal"></i> Standard waiting periods (typical)</h3><ul class="text-[13.5px] text-muted mt-3 space-y-2"><li class="flex justify-between border-b border-line/70 pb-2"><span>Initial waiting (except accident)</span><strong class="text-navy">30 days</strong></li><li class="flex justify-between border-b border-line/70 pb-2"><span>Named procedures (cataract, hernia…)</span><strong class="text-navy">1–2 years</strong></li><li class="flex justify-between"><span>Pre-existing diseases</span><strong class="text-navy">2–4 years</strong></li></ul></div>
+      <div class="card p-6"><h3 class="font-bold text-navy flex items-center gap-2"><i data-lucide="list-checks" class="w-5 h-5 text-teal"></i> Cashless claim checklist</h3><ul class="text-[13.5px] text-muted mt-3 space-y-2"><li>✓ Policy number + e-card & valid ID</li><li>✓ Doctor's admission note & estimates</li><li>✓ Pre-authorisation via TPA desk</li><li>✓ Discharge summary + bills at exit</li></ul><button class="btn btn-outline btn-sm mt-4 nav-goto" data-route="claims">Open Claims Centre</button></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ================= MOTOR ================= -->
+<div id="page-motor" class="page">
+  <section class="bg-navy text-white py-12 lg:py-16 relative overflow-hidden"><div class="absolute inset-0 opacity-[.07] dot-grid"></div>
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 relative grid lg:grid-cols-2 gap-8 items-center">
+      <div><nav class="breadcrumb text-[13px] text-white/60 flex gap-2"><button class="nav-goto hover:text-goldSoft" data-route="home">Home</button><span>/</span><span class="text-goldSoft font-semibold">Motor Insurance</span></nav>
+      <h1 class="font-display font-semibold text-[32px] sm:text-[44px] mt-3 tracking-tight">Car & bike cover, without renewal stress</h1>
+      <p class="text-white/75 mt-3 max-w-[520px]">Third-party (mandatory) vs comprehensive, IDV selection, NCB transfer and add-ons — sorted in one guided flow.</p>
+      <div class="flex gap-2 mt-5 flex-wrap"><button class="tab-pill !bg-gold !border-gold !text-navy" onclick="goQuote('car')">Car quote</button><button class="tab-pill !bg-white !text-navy" onclick="goQuote('bike')">Bike quote</button></div></div>
+      <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=70" alt="Car on Indian highway" class="rounded-lg border border-white/15 shadow-card h-[260px] lg:h-[300px] w-full object-cover">
+    </div>
+  </section>
+  <section class="py-12"><div class="max-w-[1100px] mx-auto px-4 sm:px-5">
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="card p-6"><h3 class="font-bold text-navy text-[17px] flex items-center gap-2"><i data-lucide="car" class="w-5 h-5 text-teal"></i> Comprehensive vs Third-party</h3><div class="overflow-x-auto mt-4"><table class="cmp-table min-w-[420px]"><thead><tr><th>Feature</th><th>Third-party</th><th>Comprehensive</th></tr></thead><tbody><tr><td>Third-party injury / damage</td><td>✓ Covered</td><td>✓ Covered</td></tr><tr><td>Own vehicle damage</td><td>✕ Not covered</td><td>✓ Covered</td></tr><tr><td>Theft / fire / flood</td><td>✕</td><td>✓</td></tr><tr><td>Zero-dep add-on</td><td>✕</td><td>✓ Optional</td></tr></tbody></table></div></div>
+      <div class="card p-6"><h3 class="font-bold text-navy text-[17px] flex items-center gap-2"><i data-lucide="badge-percent" class="w-5 h-5 text-teal"></i> NCB (No-Claim Bonus) guide</h3><ul class="text-[13.5px] text-muted mt-4 space-y-2.5"><li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-teal mt-0.5"></i> Ranges 20% → 50% on own-damage premium for claim-free years.</li><li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-teal mt-0.5"></i> Transferable when you change insurer or buy a new vehicle (same class).</li><li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-teal mt-0.5"></i> One own-damage claim usually resets it — we help you decide small claims.</li></ul><div class="bg-goldSoft/60 border border-gold/40 rounded-lg p-3.5 mt-4 text-[13px] text-navy"><strong>Tip:</strong> Renew before expiry to keep NCB + avoid inspection hassles.</div></div>
+    </div>
+    <div class="card shadow-card mt-6 p-6 sm:p-8">
+      <h3 class="font-display font-semibold text-navy text-[22px]">IDV quick explainer</h3>
+      <p class="text-muted text-[14px] mt-2">IDV (Insured Declared Value) ≈ current market value minus depreciation. Too low saves premium but cuts claim payout; too high wastes premium. Our quote flow suggests a fair band based on registration year.</p>
+      <div class="grid sm:grid-cols-3 gap-3 mt-5 text-center">
+        <div class="border border-line rounded-lg p-4 bg-offwhite"><p class="font-bold text-navy">0–1 yr old</p><p class="text-[13px] text-muted">~95% of ex-showroom</p></div>
+        <div class="border border-line rounded-lg p-4 bg-offwhite"><p class="font-bold text-navy">3 yrs old</p><p class="text-[13px] text-muted">~70–75% band</p></div>
+        <div class="border border-line rounded-lg p-4 bg-offwhite"><p class="font-bold text-navy">5+ yrs old</p><p class="text-[13px] text-muted">~50% or agreed value</p></div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ================= LIFE ================= -->
+<div id="page-life" class="page">
+  <section class="bg-navy text-white py-12 lg:py-16 relative overflow-hidden"><div class="absolute inset-0 opacity-[.07] dot-grid"></div>
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 relative grid lg:grid-cols-2 gap-8 items-center">
+      <div><nav class="breadcrumb text-[13px] text-white/60 flex gap-2"><button class="nav-goto hover:text-goldSoft" data-route="home">Home</button><span>/</span><span class="text-goldSoft font-semibold">Life Insurance</span></nav>
+      <h1 class="font-display font-semibold text-[32px] sm:text-[44px] mt-3 tracking-tight">Income protection your family can count on</h1>
+      <p class="text-white/75 mt-3 max-w-[520px]">Term plans for pure protection, plus savings, child and retirement options — with nominee and rider guidance.</p>
+      <div class="flex flex-wrap gap-3 mt-6"><button class="btn btn-gold" onclick="goQuote('life')">Calculate term premium</button><button class="btn btn-white-outline" onclick="openPolicy('life')">Understand riders</button></div></div>
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=70" alt="Family financial planning" class="rounded-lg border border-white/15 shadow-card h-[260px] lg:h-[300px] w-full object-cover">
+    </div>
+  </section>
+  <section class="py-12"><div class="max-w-[1000px] mx-auto px-4 sm:px-5">
+    <div class="card shadow-card gold-top p-6 sm:p-8">
+      <h2 class="font-display font-semibold text-navy text-[24px]">How much cover do you need?</h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <div><label class="label">Annual income: <span id="lIncLbl" class="text-teal">₹12,00,000</span></label><input type="range" id="lInc" min="3" max="100" value="12" oninput="calcLife()"><div class="flex justify-between text-[11.5px] text-muted"><span>₹3L</span><span>₹1Cr</span></div></div>
+        <div><label class="label">Outstanding loans: <span id="lLoanLbl" class="text-teal">₹20,00,000</span></label><input type="range" id="lLoan" min="0" max="200" value="20" oninput="calcLife()"><div class="flex justify-between text-[11.5px] text-muted"><span>₹0</span><span>₹2Cr</span></div></div>
+        <div><label class="label">Future goals (education, etc.): <span id="lGoalLbl" class="text-teal">₹30,00,000</span></label><input type="range" id="lGoal" min="0" max="200" value="30" oninput="calcLife()"></div>
+        <div><label class="label">Existing cover / assets usable:</label><select id="lExist" class="select" onchange="calcLife()"><option value="0">None</option><option value="2500000">~₹25 Lakh</option><option value="5000000" selected>~₹50 Lakh</option><option value="10000000">~₹1 Crore</option></select></div>
+      </div>
+      <div class="mt-6 bg-navy text-white rounded-lg p-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div><p class="text-[12px] font-bold tracking-widest uppercase text-goldSoft">Recommended term cover (15× method)</p><p class="font-display font-bold text-[32px]" id="lOut">₹1.80 Cr</p><p class="text-[12.5px] text-white/70">Income × 15 + loans + goals − existing assets. Review every 3 years.</p></div>
+        <button class="btn btn-gold" onclick="goQuote('life')">Get term quote</button>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-4 mt-6">
+      <div class="card p-5"><i data-lucide="shield-plus" class="w-6 h-6 text-teal"></i><h4 class="font-bold text-navy mt-2">Critical illness rider</h4><p class="text-[13px] text-muted mt-1">Lump sum on diagnosis of listed illnesses. Check survival period & sub-limits.</p></div>
+      <div class="card p-5"><i data-lucide="accessibility" class="w-6 h-6 text-teal"></i><h4 class="font-bold text-navy mt-2">Accidental rider</h4><p class="text-[13px] text-muted mt-1">Extra payout on accidental death / disability. Useful for commuters.</p></div>
+      <div class="card p-5"><i data-lucide="wallet" class="w-6 h-6 text-teal"></i><h4 class="font-bold text-navy mt-2">Waiver of premium</h4><p class="text-[13px] text-muted mt-1">Future premiums waived on disability/CI — keeps base cover alive.</p></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ================= INVESTMENT ================= -->
+<div id="page-investment" class="page">
+  <section class="bg-navy text-white py-12 lg:py-16 relative overflow-hidden"><div class="absolute inset-0 opacity-[.07] dot-grid"></div>
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 relative">
+      <nav class="breadcrumb text-[13px] text-white/60 flex gap-2"><button class="nav-goto hover:text-goldSoft" data-route="home">Home</button><span>/</span><span class="text-goldSoft font-semibold">Investment-linked Insurance</span></nav>
+      <h1 class="font-display font-semibold text-[32px] sm:text-[44px] mt-3 tracking-tight">Goal-based plans, risks explained first</h1>
+      <p class="text-white/75 max-w-[640px] mt-3">ULIPs, endowment, child and retirement plans come with charges, lock-ins and market risk. We show benefit illustrations and let you decide calmly.</p>
+    </div>
+  </section>
+  <section class="py-12"><div class="max-w-[1100px] mx-auto px-4 sm:px-5 grid lg:grid-cols-2 gap-5">
+    <div class="card shadow-card p-6 sm:p-7">
+      <h2 class="font-display font-semibold text-navy text-[22px]">Wealth projection calculator</h2>
+      <p class="text-[13px] text-muted">Illustrative only. Markets fluctuate; past performance does not assure future returns.</p>
+      <div class="space-y-5 mt-5">
+        <div><label class="label">Monthly investment: <span id="sAmtLbl" class="text-teal">₹10,000</span></label><input type="range" id="sAmt" min="1000" max="100000" step="500" value="10000" oninput="calcSIP()"></div>
+        <div><label class="label">Duration: <span id="sYrLbl" class="text-teal">15 years</span></label><input type="range" id="sYr" min="5" max="30" value="15" oninput="calcSIP()"></div>
+        <div><label class="label">Assumed return: <span id="sRetLbl" class="text-teal">10% p.a.</span></label><input type="range" id="sRet" min="4" max="14" value="10" oninput="calcSIP()"></div>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mt-6 text-center">
+        <div class="bg-offwhite border border-line rounded-lg p-3"><p class="text-[11.5px] text-muted font-bold">Invested</p><p class="font-bold text-navy text-[15px]" id="sipInv">₹18.0L</p></div>
+        <div class="bg-offwhite border border-line rounded-lg p-3"><p class="text-[11.5px] text-muted font-bold">Est. gains</p><p class="font-bold text-teal text-[15px]" id="sipGain">₹31.7L</p></div>
+        <div class="bg-navy rounded-lg p-3"><p class="text-[11.5px] text-goldSoft font-bold">Maturity*</p><p class="font-bold text-white text-[15px]" id="sipTot">₹49.7L</p></div>
+      </div>
+      <canvas id="sipChart" height="120" class="w-full mt-5" aria-label="Investment growth chart"></canvas>
+    </div>
+    <div class="space-y-5">
+      <div class="card p-6 sm:p-7">
+        <h3 class="font-display font-semibold text-navy text-[20px]">60-second risk check</h3>
+        <div class="space-y-4 mt-4 text-[14px]">
+          <div><p class="font-bold text-navy">1. If your investment fell 15% in a year, you would…</p><div class="flex flex-wrap gap-2 mt-2"><button class="tab-pill risk-q" data-s="1">Sell & exit</button><button class="tab-pill risk-q" data-s="2">Hold & wait</button><button class="tab-pill risk-q" data-s="3">Invest more</button></div></div>
+          <div><p class="font-bold text-navy">2. Your goal is…</p><div class="flex flex-wrap gap-2 mt-2"><button class="tab-pill risk-q" data-s="1">Under 5 years</button><button class="tab-pill risk-q" data-s="2">5–12 years</button><button class="tab-pill risk-q" data-s="3">12+ years</button></div></div>
+          <div><p class="font-bold text-navy">3. You prefer…</p><div class="flex flex-wrap gap-2 mt-2"><button class="tab-pill risk-q" data-s="1">Guaranteed returns</button><button class="tab-pill risk-q" data-s="2">Balanced mix</button><button class="tab-pill risk-q" data-s="3">Market growth</button></div></div>
+        </div>
+        <div id="riskOut" class="hidden mt-4 bg-tealLight border border-[#BFD9D5] rounded-lg p-4 text-[13.5px]"></div>
+        <button class="btn btn-navy btn-sm mt-4" onclick="evalRisk()">See my profile</button>
+      </div>
+      <div class="card p-6 bg-goldSoft/50 !border-gold/40"><p class="font-bold text-navy flex items-center gap-2"><i data-lucide="alert-triangle" class="w-5 h-5"></i> Charges to ask about</p><ul class="text-[13.5px] mt-2 space-y-1.5 text-navy/80"><li>• Premium allocation, fund management & mortality charges</li><li>• Lock-in (typically 5 years for ULIPs) & surrender rules</li><li>• Free-look period (30 days) for review</li></ul></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ================= CLAIMS ================= -->
+<div id="page-claims" class="page">
+  <section class="bg-navy text-white py-12 lg:py-16 relative overflow-hidden"><div class="absolute inset-0 opacity-[.07] dot-grid"></div>
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 relative grid lg:grid-cols-2 gap-8 items-center">
+      <div><nav class="breadcrumb text-[13px] text-white/60 flex gap-2"><button class="nav-goto hover:text-goldSoft" data-route="home">Home</button><span>/</span><span class="text-goldSoft font-semibold">Claims</span></nav>
+      <h1 class="font-display font-semibold text-[32px] sm:text-[44px] mt-3 tracking-tight">Claims Centre — calm help, fast action</h1>
+      <p class="text-white/75 mt-3 max-w-[520px]">File, track and escalate health, motor and life claims with checklists and advisor support at every stage.</p>
+      <div class="flex flex-wrap gap-3 mt-6"><button class="btn btn-gold" onclick="document.getElementById('fileClaim').scrollIntoView({behavior:'smooth'})">File a claim</button><button class="btn btn-white-outline" onclick="document.getElementById('trackClaim').scrollIntoView({behavior:'smooth'})">Track claim</button></div>
+      <p class="text-[12.5px] text-white/60 mt-4">Emergency? Call <a href="tel:18004190000" class="text-goldSoft font-bold">1800 419 0000</a> (24×7 intimation assistance).</p></div>
+      <div class="bg-white text-ink rounded-xl p-6">
+        <p class="font-bold text-navy">Claim journey</p>
+        <div class="mt-4 space-y-0" id="claimJourneyStatic"></div>
+      </div>
+    </div>
+  </section>
+  <section class="py-12"><div class="max-w-[1100px] mx-auto px-4 sm:px-5 grid lg:grid-cols-2 gap-5">
+    <div id="fileClaim" class="card shadow-card p-6 sm:p-7 scroll-mt-24">
+      <h2 class="font-display font-semibold text-navy text-[22px]">Intimate a new claim</h2>
+      <p class="text-[13px] text-muted mt-1">Takes ~3 minutes. Our team calls back within 2 working hours.</p>
+      <div class="grid sm:grid-cols-2 gap-4 mt-5">
+        <div><label class="label">Claim type *</label><select id="cType" class="select"><option>Health / Hospitalisation</option><option>Car accident / damage</option><option>Bike accident / damage</option><option>Term life / death claim</option><option>Travel / Home</option></select></div>
+        <div><label class="label">Policy number *</label><input id="cPolicy" class="input" placeholder="e.g., LUNA-HL-88231"></div>
+        <div><label class="label">Full name *</label><input id="cName" class="input" placeholder="Policyholder / nominee"></div>
+        <div><label class="label">Mobile *</label><input id="cMobile" class="input" maxlength="10" placeholder="10-digit mobile"></div>
+        <div><label class="label">Date of incident *</label><input id="cDate" type="date" class="input"></div>
+        <div><label class="label">Estimated amount (₹)</label><input id="cAmt" type="number" class="input" placeholder="e.g., 85000"></div>
+        <div class="sm:col-span-2"><label class="label">Brief description *</label><textarea id="cDesc" rows="3" class="input" placeholder="What happened, where, hospital/garage name if any…"></textarea></div>
+      </div>
+      <div class="mt-4 space-y-2" id="docCheck">
+        <p class="label">Document readiness (tick what you have)</p>
+        <div class="grid sm:grid-cols-2 gap-2 text-[13px]">
+          <label class="checkbox-card"><input type="checkbox"> Policy copy / e-card</label>
+          <label class="checkbox-card"><input type="checkbox"> ID + address proof</label>
+          <label class="checkbox-card"><input type="checkbox"> Bills / estimates / FIR*</label>
+          <label class="checkbox-card"><input type="checkbox"> Discharge / survey photos</label>
+        </div>
+      </div>
+      <button class="btn btn-teal w-full mt-5" onclick="fileClaim()">Submit intimation <i data-lucide="send" class="w-4 h-4"></i></button>
+      <div id="fileClaimOut" class="mt-4"></div>
+    </div>
+    <div class="space-y-5">
+      <div id="trackClaim" class="card shadow-card p-6 sm:p-7 scroll-mt-24">
+        <h2 class="font-display font-semibold text-navy text-[22px]">Track existing claim</h2>
+        <div class="flex gap-2 mt-4"><input id="pageClaimId" class="input uppercase" placeholder="LUNA-XXXXXX"><button class="btn btn-navy shrink-0" onclick="trackClaim('pageClaimId','pageClaimResult')">Track</button></div>
+        <div id="pageClaimResult" class="mt-4"></div>
+        <div class="flex gap-2 mt-4"><button class="tab-pill" onclick="fillDemoClaim()">Try demo ID</button><button class="tab-pill" onclick="openModal('callbackModal')">Need help?</button></div>
+      </div>
+      <div class="card p-6"><h3 class="font-bold text-navy">Escalation matrix (standard)</h3><ol class="text-[13.5px] text-muted mt-3 space-y-2.5"><li><strong class="text-navy">Level 1:</strong> LUNA claims advisor + insurer TPA / surveyor (0–7 days)</li><li><strong class="text-navy">Level 2:</strong> Insurer grievance cell with written complaint no. (7–15 days)</li><li><strong class="text-navy">Level 3:</strong> IRDAI Bima Bharosa portal & Insurance Ombudsman (after 30 days / rejection)</li></ol><button class="btn btn-outline btn-sm mt-4" onclick="openModal('legalModal');showLegal('grievance')">Grievance redressal policy</button></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<div id="page-about" class="page">
+  <section class="bg-navy text-white py-12 lg:py-16 relative overflow-hidden"><div class="absolute inset-0 opacity-[.07] dot-grid"></div>
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 relative grid lg:grid-cols-2 gap-8 items-center">
+      <div><nav class="breadcrumb text-[13px] text-white/60 flex gap-2"><button class="nav-goto hover:text-goldSoft" data-route="home">Home</button><span>/</span><span class="text-goldSoft font-semibold">About</span></nav>
+      <h1 class="font-display font-semibold text-[32px] sm:text-[44px] mt-3 tracking-tight">LUNA Insurance — clarity you can verify</h1>
+      <p class="text-white/75 mt-3 max-w-[520px]">We are building a premium Indian insurance marketplace where product information is honest, comparisons are fair and servicing does not disappear after payment.</p>
+      <div class="flex gap-3 mt-6 flex-wrap"><span class="bg-white/10 border border-white/15 rounded-lg px-4 py-2.5 text-[13px]"><strong>Professional</strong> · Trustworthy</span><span class="bg-white/10 border border-white/15 rounded-lg px-4 py-2.5 text-[13px]"><strong>Modern</strong> · Customer-focused</span></div></div>
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=70" alt="LUNA Insurance corporate office" class="rounded-lg border border-white/15 h-[260px] lg:h-[300px] w-full object-cover">
+    </div>
+  </section>
+  <section class="py-12"><div class="max-w-[1100px] mx-auto px-4 sm:px-5 grid md:grid-cols-3 gap-4">
+    <div class="card p-6"><i data-lucide="eye" class="w-6 h-6 text-teal"></i><h3 class="font-bold text-navy mt-3">What we promise</h3><p class="text-[13.5px] text-muted mt-2">Plain-language disclosures, side-by-side comparisons and written summaries before you pay.</p></div>
+    <div class="card p-6"><i data-lucide="handshake" class="w-6 h-6 text-teal"></i><h3 class="font-bold text-navy mt-3">What we never do</h3><p class="text-[13.5px] text-muted mt-2">No inflated benefit claims, no hidden charges, no spam calls after a quote.</p></div>
+    <div class="card p-6"><i data-lucide="award" class="w-6 h-6 text-teal"></i><h3 class="font-bold text-navy mt-3">How we earn</h3><p class="text-[13.5px] text-muted mt-2">Standard commission from insurers as permitted — disclosed on request. Advice stays need-based.</p></div>
+  </div>
+  <div class="max-w-[1100px] mx-auto px-4 sm:px-5 mt-6 card p-6 sm:p-8 grid lg:grid-cols-2 gap-6 items-center">
+    <div><h2 class="font-display font-semibold text-navy text-[24px]">Leadership & compliance</h2><p class="text-muted text-[14px] mt-2">Founder and principal officer profiles, CIN and registered office details are maintained in the Legal section and updated as registrations progress. We follow IRDAI guidelines on solicitation, benefit illustrations and grievance redressal.</p><div class="flex gap-3 mt-4 flex-wrap"><button class="btn btn-outline btn-sm" onclick="openModal('legalModal');showLegal('disclosure')">Corporate disclosures</button><button class="btn btn-outline btn-sm nav-goto" data-route="contact">Contact corporate</button></div></div>
+    <div class="grid grid-cols-3 gap-3 text-center">
+      <div class="partner-slot"><i data-lucide="user-round" class="w-6 h-6 text-muted"></i><p class="text-[12.5px] font-bold">Founder</p><p class="text-[11px] text-muted">Profile slot</p></div>
+      <div class="partner-slot"><i data-lucide="user-round" class="w-6 h-6 text-muted"></i><p class="text-[12.5px] font-bold">Principal Officer</p><p class="text-[11px] text-muted">Profile slot</p></div>
+      <div class="partner-slot"><i data-lucide="user-round" class="w-6 h-6 text-muted"></i><p class="text-[12.5px] font-bold">Grievance Head</p><p class="text-[11px] text-muted">Profile slot</p></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ================= CONTACT ================= -->
+<div id="page-contact" class="page">
+  <section class="bg-navy text-white py-12 lg:py-16 relative overflow-hidden"><div class="absolute inset-0 opacity-[.07] dot-grid"></div>
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-5 relative">
+      <nav class="breadcrumb text-[13px] text-white/60 flex gap-2"><button class="nav-goto hover:text-goldSoft" data-route="home">Home</button><span>/</span><span class="text-goldSoft font-semibold">Contact</span></nav>
+      <h1 class="font-display font-semibold text-[32px] sm:text-[44px] mt-3 tracking-tight">Talk to LUNA Insurance</h1>
+      <p class="text-white/75 max-w-[600px] mt-3">New policy, renewal, claim or complaint — choose the fastest route below. We respond to emails within 1 working day.</p>
+    </div>
+  </section>
+  <section class="py-12"><div class="max-w-[1100px] mx-auto px-4 sm:px-5 grid lg:grid-cols-[1fr_380px] gap-5">
+    <div class="card shadow-card p-6 sm:p-8">
+      <h2 class="font-bold text-navy text-[18px]">Send us a message</h2>
+      <div class="grid sm:grid-cols-2 gap-4 mt-5">
+        <div><label class="label">Name *</label><input id="ctName" class="input" placeholder="Full name"></div>
+        <div><label class="label">Mobile *</label><input id="ctMobile" class="input" maxlength="10" placeholder="10-digit mobile"></div>
+        <div><label class="label">Email</label><input id="ctEmail" type="email" class="input" placeholder="you@example.com"></div>
+        <div><label class="label">Topic *</label><select id="ctTopic" class="select"><option>New policy guidance</option><option>Renewal / endorsement</option><option>Claim assistance</option><option>Complaint / grievance</option><option>Partnership</option></select></div>
+        <div class="sm:col-span-2"><label class="label">Message *</label><textarea id="ctMsg" rows="4" class="input" placeholder="How can we help? (Policy no. if applicable)"></textarea></div>
+      </div>
+      <button class="btn btn-teal mt-5" onclick="submitContact()">Send message <i data-lucide="send" class="w-4 h-4"></i></button>
+      <p class="hint mt-3">For grievances, please include complaint reference if already raised. Escalation policy available in Legal.</p>
+    </div>
+    <div class="space-y-4">
+      <div class="card p-6 bg-navy !border-navy text-white"><p class="text-[12px] font-bold tracking-widest uppercase text-goldSoft">Toll-free</p><p class="font-display font-bold text-[26px] mt-1">1800 419 0000</p><p class="text-white/70 text-[13px]">Mon–Sat · 9:30 AM – 6:30 PM IST<br>Claims intimation: 24×7</p><div class="flex gap-2 mt-4"><a href="tel:18004190000" class="btn btn-gold btn-sm flex-1">Call</a><button class="btn btn-white-outline btn-sm flex-1" onclick="toggleChat(true)">Chat</button></div></div>
+      <div class="card p-6"><p class="font-bold text-navy flex items-center gap-2"><i data-lucide="mail" class="w-5 h-5 text-teal"></i> Email us</p><p class="text-[13.5px] text-muted mt-2">General: care@lunainsurance.example<br>Claims: claims@lunainsurance.example<br>Grievance: grievance@lunainsurance.example</p></div>
+      <div class="card p-6"><p class="font-bold text-navy flex items-center gap-2"><i data-lucide="map-pin" class="w-5 h-5 text-teal"></i> Offices</p><ul class="text-[13.5px] text-muted mt-2 space-y-2"><li><strong class="text-navy">New Delhi</strong> — Registered & corporate office</li><li><strong class="text-navy">Mumbai</strong> — Service branch</li><li><strong class="text-navy">Bengaluru</strong> — Service branch</li></ul><p class="hint mt-2">Detailed addresses shared on appointment confirmation.</p></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- GLOBAL FINAL CTA -->
+<section class="bg-navy text-white py-14 lg:py-20 relative overflow-hidden border-t-4 border-gold">
+  <div class="absolute inset-0 opacity-[.06] dot-grid"></div>
+  <div class="max-w-[860px] mx-auto px-4 sm:px-5 text-center relative">
+    <span class="eyebrow on-dark mx-auto">Begin with confidence</span>
+    <h2 class="font-display font-semibold text-[32px] sm:text-[44px] mt-4 tracking-tight">Explore insurance options with complete clarity</h2>
+    <p class="text-white/70 mt-4 max-w-[600px] mx-auto">Get an instant illustration, compare fairly and talk to an advisor only when you want to. Your family deserves unhurried decisions.</p>
+    <div class="flex flex-col sm:flex-row justify-center gap-3 mt-8">
+      <button class="btn btn-gold btn-lg nav-goto" data-route="home" data-anchor="quoteSection">Get a Quote <i data-lucide="arrow-right" class="w-5 h-5"></i></button>
+      <button class="btn btn-white-outline btn-lg nav-goto" data-route="home" data-anchor="explore">Explore Insurance</button>
+      <button class="btn btn-lg bg-teal text-white hover:bg-[#0C5F59]" onclick="openModal('callbackModal')"><i data-lucide="phone-call" class="w-5 h-5"></i> Request callback</button>
+    </div>
+    <p class="text-[12px] text-white/50 mt-6">Insurance is the subject matter of solicitation. Read all policy documents carefully before concluding a sale.</p>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-[#081627] text-white pt-12 pb-6 border-t border-white/10">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-5">
+    <div class="grid lg:grid-cols-[320px_1fr] gap-10 pb-10 border-b border-white/10">
+      <div>
+        <div class="flex items-center gap-2.5"><span class="w-10 h-10 rounded-lg bg-white flex items-center justify-center"><i data-lucide="moon-star" class="w-5 h-5 text-navy"></i></span><span class="leading-none"><span class="block font-display font-bold text-[22px]">LUNA</span><span class="block text-[10px] font-bold tracking-[.28em] text-gold">INSURANCE</span></span></div>
+        <p class="text-white/60 text-[13.5px] mt-4">A premium Indian insurance marketplace for health, motor, life and investment-linked insurance — focused on clear information and dependable servicing.</p>
+        <div class="flex gap-2 mt-5">
+          <button class="w-9 h-9 rounded-md bg-white/10 flex items-center justify-center hover:bg-teal" aria-label="LinkedIn" onclick="toast('Social profiles launching with brand verification.','success')"><i data-lucide="linkedin" class="w-4 h-4"></i></button>
+          <button class="w-9 h-9 rounded-md bg-white/10 flex items-center justify-center hover:bg-teal" aria-label="X" onclick="toast('Social profiles launching with brand verification.','success')"><i data-lucide="twitter" class="w-4 h-4"></i></button>
+          <button class="w-9 h-9 rounded-md bg-white/10 flex items-center justify-center hover:bg-teal" aria-label="YouTube" onclick="toast('Social profiles launching with brand verification.','success')"><i data-lucide="youtube" class="w-4 h-4"></i></button>
+          <button class="w-9 h-9 rounded-md bg-white/10 flex items-center justify-center hover:bg-teal" aria-label="Instagram" onclick="toast('Social profiles launching with brand verification.','success')"><i data-lucide="instagram" class="w-4 h-4"></i></button>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div><p class="text-[12px] font-800 font-bold tracking-[.16em] uppercase text-gold">Products</p><ul class="mt-4 space-y-2.5 text-[13.5px] text-white/70"><li><button class="hover:text-white nav-goto" data-route="health">Health Insurance</button></li><li><button class="hover:text-white nav-goto" data-route="motor">Car Insurance</button></li><li><button class="hover:text-white nav-goto" data-route="motor">Bike Insurance</button></li><li><button class="hover:text-white nav-goto" data-route="life">Term Life</button></li><li><button class="hover:text-white nav-goto" data-route="investment">Investment Plans</button></li><li><button class="hover:text-white nav-goto" data-route="insurance">Travel & Home</button></li></ul></div>
+        <div><p class="text-[12px] font-bold tracking-[.16em] uppercase text-gold">Company</p><ul class="mt-4 space-y-2.5 text-[13.5px] text-white/70"><li><button class="hover:text-white nav-goto" data-route="about">About LUNA</button></li><li><button class="hover:text-white" onclick="openModal('partnerModal')">Become a partner</button></li><li><button class="hover:text-white nav-goto" data-route="home" data-anchor="insights">Guides & insights</button></li><li><button class="hover:text-white nav-goto" data-route="contact">Careers (write to us)</button></li></ul></div>
+        <div><p class="text-[12px] font-bold tracking-[.16em] uppercase text-gold">Support</p><ul class="mt-4 space-y-2.5 text-[13.5px] text-white/70"><li><button class="hover:text-white nav-goto" data-route="claims">File a claim</button></li><li><button class="hover:text-white nav-goto" data-route="claims" data-anchor="trackClaim">Track claim</button></li><li><button class="hover:text-white nav-goto" data-route="home" data-anchor="faq">FAQs</button></li><li><button class="hover:text-white nav-goto" data-route="contact">Contact us</button></li><li><a class="hover:text-white" href="tel:18004190000">1800 419 0000</a></li></ul></div>
+        <div><p class="text-[12px] font-bold tracking-[.16em] uppercase text-gold">Legal</p><ul class="mt-4 space-y-2.5 text-[13.5px] text-white/70"><li><button class="hover:text-white" onclick="openModal('legalModal');showLegal('privacy')">Privacy Policy</button></li><li><button class="hover:text-white" onclick="openModal('legalModal');showLegal('terms')">Terms of Use</button></li><li><button class="hover:text-white" onclick="openModal('legalModal');showLegal('grievance')">Grievance Redressal</button></li><li><button class="hover:text-white" onclick="openModal('legalModal');showLegal('disclosure')">Disclosures</button></li></ul></div>
+      </div>
+    </div>
+    <div class="py-5 text-[12px] leading-relaxed text-white/50">
+      <p><strong class="text-white/70">Disclaimer:</strong> LUNA Insurance is an insurance marketplace that helps you compare and understand insurance products offered by IRDAI-registered insurers. Insurance is the subject matter of solicitation. Premiums, benefits, exclusions, waiting periods and claim procedures shown are illustrative and for education; the insurer's policy wording, proposal form and benefit illustration prevail. Please read all policy documents carefully before concluding a sale. For consumer education, refer to IRDAI's official resources. Company registration, CIN and licence details are maintained in Corporate Disclosures and updated as applicable.</p>
+    </div>
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-4 border-t border-white/10 text-[12.5px] text-white/50">
+      <p>© 2026 LUNA Insurance. All rights reserved. · Made for Indian families.</p>
+      <div class="flex gap-4"><button class="hover:text-white" onclick="openModal('legalModal');showLegal('terms')">Terms</button><button class="hover:text-white" onclick="openModal('legalModal');showLegal('privacy')">Privacy</button><button class="hover:text-white" onclick="openModal('legalModal');showLegal('grievance')">Grievance</button></div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 z-[60] bg-white border-t border-line px-4 py-2.5 flex gap-2.5" id="mobileCta">
+  <a href="tel:18004190000" class="btn btn-outline flex-1 !py-3" aria-label="Call support"><i data-lucide="phone-call" class="w-4 h-4"></i> Call</a>
+  <button class="btn btn-teal flex-[2] !py-3 nav-goto" data-route="home" data-anchor="quoteSection">Get a Quote <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+</div>
+
+<!-- BACK TO TOP + CHAT -->
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i data-lucide="arrow-up" class="w-5 h-5"></i></button>
+<button id="chatBtn" onclick="toggleChat()" class="fixed bottom-[76px] lg:bottom-6 right-4 lg:right-6 z-[70] w-[54px] h-[54px] rounded-full bg-navy text-white shadow-card flex items-center justify-center hover:bg-navy2 border-2 border-gold" aria-label="Chat with LUNA Assist"><i data-lucide="message-circle-heart" class="w-6 h-6"></i><span class="absolute -top-1 -right-1 w-4 h-4 bg-teal rounded-full border-2 border-white"></span></button>
+<div id="chatPanel" role="dialog" aria-label="LUNA Assist chat">
+  <div class="bg-navy text-white px-4 py-3.5 flex items-center gap-3">
+    <span class="w-9 h-9 rounded-full bg-gold flex items-center justify-center"><i data-lucide="moon-star" class="w-4 h-4 text-navy"></i></span>
+    <div class="flex-1"><p class="font-bold text-[14.5px]">LUNA Assist</p><p class="text-[11.5px] text-white/70 flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> Online · replies instantly</p></div>
+    <button onclick="toggleChat(false)" class="w-8 h-8 rounded-md bg-white/10 flex items-center justify-center" aria-label="Close chat"><i data-lucide="x" class="w-4 h-4"></i></button>
+  </div>
+  <div id="chatBody" class="flex-1 overflow-y-auto p-4 space-y-3 bg-offwhite scrollbar-thin"></div>
+  <div class="p-3 bg-white border-t border-line">
+    <div class="flex gap-2 flex-wrap mb-2.5" id="chatQuick"></div>
+    <div class="flex gap-2"><input id="chatInput" class="input !py-2.5" placeholder="Type your question…" aria-label="Chat message" onkeydown="if(event.key==='Enter')sendChat()"><button class="btn btn-teal !px-3.5" onclick="sendChat()" aria-label="Send"><i data-lucide="send" class="w-4 h-4"></i></button></div>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal" role="dialog" aria-label="Login"><div class="modal-bg" onclick="closeModal('loginModal')"></div>
+  <div class="modal-box p-6 sm:p-8">
+    <button class="absolute top-4 right-4 w-8 h-8 rounded-md bg-offwhite flex items-center justify-center" onclick="closeModal('loginModal')" aria-label="Close"><i data-lucide="x" class="w-4 h-4"></i></button>
+    <div id="loginStep1">
+      <span class="eyebrow">Welcome back</span><h3 class="font-display font-semibold text-navy text-[26px] mt-2">Login to LUNA Insurance</h3>
+      <p class="text-muted text-[14px] mt-1">Use your registered mobile number. We verify with OTP.</p>
+      <label class="label mt-5">Mobile number *</label>
+      <div class="flex gap-2"><span class="input !w-[70px] text-center font-bold bg-offwhite">+91</span><input id="loginPhone" class="input" maxlength="10" placeholder="10-digit mobile" inputmode="numeric"></div>
+      <button class="btn btn-teal w-full mt-4" onclick="sendOtp()">Send OTP <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+      <p class="hint mt-3 text-center">New here? An account is created automatically on first OTP verification.</p>
+    </div>
+    <div id="loginStep2" class="hidden">
+      <span class="eyebrow">Verify OTP</span><h3 class="font-display font-semibold text-navy text-[26px] mt-2">Enter 4-digit code</h3>
+      <p class="text-muted text-[14px] mt-1">Sent to +91 <span id="otpPhoneLbl" class="font-bold text-navy"></span> · Demo code: <strong class="text-teal" id="demoOtp">—</strong></p>
+      <div class="flex gap-3 justify-center mt-5" id="otpRow"><input class="otp-box" maxlength="1" inputmode="numeric"><input class="otp-box" maxlength="1" inputmode="numeric"><input class="otp-box" maxlength="1" inputmode="numeric"><input class="otp-box" maxlength="1" inputmode="numeric"></div>
+      <button class="btn btn-navy w-full mt-5" onclick="verifyOtp()">Verify & Login</button>
+      <div class="flex justify-between mt-3 text-[13px]"><button class="text-teal font-bold" onclick="backToPhone()">← Change number</button><button class="text-teal font-bold" onclick="sendOtp(true)">Resend OTP</button></div>
+    </div>
+    <div id="loginStep3" class="hidden text-center py-4">
+      <span class="w-16 h-16 rounded-full bg-tealLight inline-flex items-center justify-center"><i data-lucide="check-circle-2" class="w-8 h-8 text-teal"></i></span>
+      <h3 class="font-display font-semibold text-navy text-[24px] mt-4">Welcome to LUNA</h3>
+      <p class="text-muted text-[14px] mt-2">You are logged in as <strong id="loggedUser" class="text-navy"></strong>. Your quotes and claims will now sync to this device.</p>
+      <button class="btn btn-teal w-full mt-5" onclick="closeModal('loginModal')">Continue exploring</button>
+    </div>
+  </div>
+</div>
+
+<!-- CALLBACK MODAL -->
+<div id="callbackModal" class="modal" role="dialog" aria-label="Request callback"><div class="modal-bg" onclick="closeModal('callbackModal')"></div>
+  <div class="modal-box p-6 sm:p-8">
+    <button class="absolute top-4 right-4 w-8 h-8 rounded-md bg-offwhite flex items-center justify-center" onclick="closeModal('callbackModal')" aria-label="Close"><i data-lucide="x" class="w-4 h-4"></i></button>
+    <span class="eyebrow">Callback</span><h3 class="font-display font-semibold text-navy text-[26px] mt-2">Request a guidance call</h3>
+    <p class="text-muted text-[14px]">An advisor calls within 2 working hours (Mon–Sat).</p>
+    <div class="grid sm:grid-cols-2 gap-4 mt-5">
+      <div><label class="label">Name *</label><input id="cbName" class="input" placeholder="Full name"></div>
+      <div><label class="label">Mobile *</label><input id="cbPhone" class="input" maxlength="10" placeholder="10-digit mobile"></div>
+      <div><label class="label">Topic</label><select id="cbTopic" class="select"><option>Health insurance</option><option>Car insurance</option><option>Bike insurance</option><option>Term life</option><option>Investment plans</option><option>Claim help</option></select></div>
+      <div><label class="label">Preferred time</label><select id="cbTime" class="select"><option>Today · 12–2 PM</option><option>Today · 2–5 PM</option><option>Today · 5–7 PM</option><option>Tomorrow · 10 AM–12 PM</option><option>Tomorrow · 12–4 PM</option></select></div>
+    </div>
+    <button class="btn btn-teal w-full mt-5" onclick="submitCallback()">Confirm callback <i data-lucide="phone-call" class="w-4 h-4"></i></button>
+  </div>
+</div>
+
+<!-- POLICY MODAL -->
+<div id="policyModal" class="modal" role="dialog" aria-label="Policy details"><div class="modal-bg" onclick="closeModal('policyModal')"></div>
+  <div class="modal-box lg p-6 sm:p-8"><button class="absolute top-4 right-4 w-8 h-8 rounded-md bg-offwhite flex items-center justify-center" onclick="closeModal('policyModal')" aria-label="Close"><i data-lucide="x" class="w-4 h-4"></i></button><div id="policyContent"></div></div>
+</div>
+
+<!-- ARTICLE MODAL -->
+<div id="articleModal" class="modal" role="dialog" aria-label="Guide"><div class="modal-bg" onclick="closeModal('articleModal')"></div>
+  <div class="modal-box lg p-0 overflow-hidden"><div id="articleContent"></div></div>
+</div>
+
+<!-- LEGAL MODAL -->
+<div id="legalModal" class="modal" role="dialog" aria-label="Legal"><div class="modal-bg" onclick="closeModal('legalModal')"></div>
+  <div class="modal-box lg p-6 sm:p-8">
+    <button class="absolute top-4 right-4 w-8 h-8 rounded-md bg-offwhite flex items-center justify-center" onclick="closeModal('legalModal')" aria-label="Close"><i data-lucide="x" class="w-4 h-4"></i></button>
+    <div class="flex gap-2 flex-wrap mb-5"><button class="tab-pill legal-tab active" data-legal="privacy" onclick="showLegal('privacy',this)">Privacy</button><button class="tab-pill legal-tab" data-legal="terms" onclick="showLegal('terms',this)">Terms</button><button class="tab-pill legal-tab" data-legal="grievance" onclick="showLegal('grievance',this)">Grievance</button><button class="tab-pill legal-tab" data-legal="disclosure" onclick="showLegal('disclosure',this)">Disclosures</button></div>
+    <div id="legalContent" class="text-[14px] text-muted leading-relaxed max-h-[55vh] overflow-y-auto scrollbar-thin pr-1"></div>
+  </div>
+</div>
+
+<!-- PARTNER MODAL -->
+<div id="partnerModal" class="modal" role="dialog" aria-label="Partner"><div class="modal-bg" onclick="closeModal('partnerModal')"></div>
+  <div class="modal-box p-6 sm:p-8">
+    <button class="absolute top-4 right-4 w-8 h-8 rounded-md bg-offwhite flex items-center justify-center" onclick="closeModal('partnerModal')" aria-label="Close"><i data-lucide="x" class="w-4 h-4"></i></button>
+    <span class="eyebrow">Partnerships</span><h3 class="font-display font-semibold text-navy text-[26px] mt-2">List with LUNA Insurance</h3>
+    <p class="text-muted text-[14px]">For insurers, TPAs, garages, hospitals and distributors. We verify credentials before any public listing.</p>
+    <div class="grid sm:grid-cols-2 gap-4 mt-5">
+      <div><label class="label">Organisation *</label><input id="ptOrg" class="input" placeholder="Company name"></div>
+      <div><label class="label">Work email *</label><input id="ptEmail" type="email" class="input" placeholder="you@company.com"></div>
+      <div><label class="label">Type</label><select id="ptType" class="select"><option>Insurance company</option><option>TPA / Health network</option><option>Garage / workshop</option><option>Hospital</option><option>Distributor / POSP</option><option>Other</option></select></div>
+      <div><label class="label">Contact number *</label><input id="ptPhone" class="input" maxlength="10" placeholder="10-digit mobile"></div>
+    </div>
+    <button class="btn btn-navy w-full mt-5" onclick="submitPartner()">Submit request</button>
+  </div>
+</div>
+
+<div id="toastWrap" aria-live="polite"></div>
+
+<script>
+/* ============ HELPERS ============ */
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reducedMotion)document.body.classList.add('reduced-motion');
+const fmtINR=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+function toast(msg,type='success'){const w=$('#toastWrap');const t=document.createElement('div');t.className='toast '+type;t.innerHTML=`<i data-lucide="${type==='error'?'alert-circle':'check-circle-2'}" class="w-5 h-5 shrink-0"></i><span>${msg}</span>`;w.appendChild(t);lucide.createIcons();setTimeout(()=>{t.style.opacity='0';t.style.transform='translateY(8px)';setTimeout(()=>t.remove(),300)},3600)}
+function openModal(id){$('#'+id).classList.add('open');document.body.style.overflow='hidden';lucide.createIcons()}
+function closeModal(id){$('#'+id).classList.remove('open');document.body.style.overflow='';if(id==='loginModal'){/* keep state */}}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.modal.open').forEach(m=>m.classList.remove('open'));closeSearch();closeMobile();document.body.style.overflow=''}});
+$$('.modal-bg').forEach(()=>{});
+
+/* ============ ROUTER ============ */
+const routes=['home','insurance','health','motor','life','investment','claims','about','contact'];
+let currentRoute='home';
+function navigateTo(route,anchor){
+  if(!routes.includes(route))route='home';
+  currentRoute=route;
+  $$('.page').forEach(p=>p.classList.remove('active'));
+  $('#page-'+route).classList.add('active');
+  $$('.nav-link[data-nav]').forEach(a=>a.classList.toggle('active',a.dataset.nav===route));
+  closeMobile();
+  window.scrollTo({top:0,behavior:reducedMotion?'auto':'smooth'});
+  try{history.replaceState(null,'','#'+route)}catch(e){}
+  requestAnimationFrame(()=>{observeReveals();lucide.createIcons();
+    if(anchor){setTimeout(()=>{const el=document.getElementById(anchor);if(el)el.scrollIntoView({behavior:reducedMotion?'auto':'smooth',block:'start'})},120)}
+  });
+}
+document.addEventListener('click',e=>{
+  const g=e.target.closest('.nav-goto');
+  if(g){navigateTo(g.dataset.route,g.dataset.anchor)}
+  const f=e.target.closest('[data-faq-goto]');
+  if(f){navigateTo('home','faq')}
+});
+function goQuote(tab){navigateTo('home','quoteSection');setTimeout(()=>setQuoteTab(tab),200)}
+function toggleDropdown(btn,ev){if(window.innerWidth<1024){ev.preventDefault();btn.parentElement.classList.toggle('open')}else{/* hover handles; click navigates */}}
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-item'))$$('.nav-item.open').forEach(n=>n.classList.remove('open'))});
+
+/* ============ MOBILE ============ */
+$('#hamburger').addEventListener('click',()=>{$('#mobileMenu').classList.add('open');$('#menuOverlay').classList.add('open');$('#hamburger').setAttribute('aria-expanded','true');document.body.style.overflow='hidden'});
+function closeMobile(){$('#mobileMenu').classList.remove('open');$('#menuOverlay').classList.remove('open');document.body.style.overflow=''}
+
+/* ============ SCROLL FX ============ */
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  $('#progressBar').style.width=p+'%';
+  $('#mainHeader').classList.toggle('scrolled',h.scrollTop>10);
+  $('#backTop').classList.toggle('show',h.scrollTop>600);
+},{passive:true});
+let revealObs;
+function observeReveals(){
+  const els=$$('.reveal:not(.revealed)');
+  if(reducedMotion){els.forEach(el=>el.classList.add('revealed'));return}
+  if(!revealObs)revealObs=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('revealed');revealObs.unobserve(en.target);const hw=en.target.closest('.how-wrap');if(hw)hw.classList.add('inview');if(en.target.classList.contains('how-wrap'))en.target.classList.add('inview')}}),{threshold:.12});
+  els.forEach(el=>revealObs.observe(el));
+  const hw=$('.how-wrap');if(hw){new IntersectionObserver((es,o)=>{es.forEach(en=>{if(en.isIntersecting){hw.classList.add('inview');o.disconnect()}})},{threshold:.3}).observe(hw)}
+}
+
+/* ============ EXPLORE DATA ============ */
+const products=[
+ {icon:'heart-pulse',route:'health',title:'Health Insurance',desc:'Individual, family floater & senior citizen covers with cashless care.',pts:['Cashless hospitalisation','Day-care & restoration'],tag:'Most compared'},
+ {icon:'car',route:'motor',title:'Car Insurance',desc:'Comprehensive & third-party plans with NCB and zero-dep options.',pts:['IDV guidance','Garage assistance'],tag:'Renewals'},
+ {icon:'bike',route:'motor',title:'Bike Insurance',desc:'Affordable two-wheeler protection for daily commutes & touring.',pts:['Third-party from day 1','PA cover included'],tag:'2-wheeler'},
+ {icon:'umbrella',route:'life',title:'Term Life Insurance',desc:'High life cover at low premiums to protect income & loans.',pts:['Up to ₹2 Cr illustration','Rider options'],tag:'Family first'},
+ {icon:'plane',route:'insurance',title:'Travel Insurance',desc:'International & domestic trips with medical and baggage cover.',pts:['Visa-compliant plans','Covid-era clarity'],tag:'Trips'},
+ {icon:'home',route:'insurance',title:'Home Insurance',desc:'Structure & contents cover against fire, theft, flood & more.',pts:['Tenants & owners','Low yearly cost'],tag:'Home'},
+ {icon:'baby',route:'life',title:'Child Plans',desc:'Education & milestone savings with protection continuity.',pts:['Goal mapping','Waiver benefits'],tag:'Goals'},
+ {icon:'trending-up',route:'investment',title:'Retirement & Investment',desc:'ULIP, endowment & pension options with charges explained.',pts:['Benefit illustrations','Risk profiling'],tag:'Wealth'},
+];
+function renderExplore(){
+  $('#exploreGrid').innerHTML=products.map((p,i)=>`
+  <div class="card card-hover p-5 sm:p-6 reveal ${i%4===1?'reveal-d1':i%4===2?'reveal-d2':i%4===3?'reveal-d3':''} flex flex-col">
+    <div class="flex justify-between items-start"><span class="icon-tile"><i data-lucide="${p.icon}" class="w-5 h-5"></i></span><span class="text-[10.5px] font-800 font-bold tracking-widest uppercase bg-goldSoft text-navy px-2 py-1 rounded">${p.tag}</span></div>
+    <h3 class="font-bold text-navy text-[16.5px] mt-4">${p.title}</h3>
+    <p class="text-[13.5px] text-muted mt-1.5 flex-1">${p.desc}</p>
+    <ul class="mt-3 space-y-1">${p.pts.map(t=>`<li class="text-[12.5px] font-semibold text-navy2 flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal"></i>${t}</li>`).join('')}</ul>
+    <div class="flex gap-2 mt-4 pt-4 border-t border-line"><button class="text-[13.5px] font-bold text-teal hover:text-navy nav-goto" data-route="${p.route}">View plans →</button><span class="flex-1"></span><button class="text-[13.5px] font-bold text-muted hover:text-teal" onclick="openPolicy('${p.route==='motor'?(p.title.includes('Bike')?'bike':'car'):p.route}')">Details</button></div>
+  </div>`).join('');
+  $('#allProductsGrid').innerHTML=products.map(p=>`
+  <div class="card card-hover p-5 flex flex-col"><span class="icon-tile"><i data-lucide="${p.icon}" class="w-5 h-5"></i></span><h3 class="font-bold text-navy text-[16px] mt-3">${p.title}</h3><p class="text-[13px] text-muted mt-1 flex-1">${p.desc}</p><button class="btn btn-outline btn-sm mt-4 nav-goto" data-route="${p.route}">Explore ${p.title.split(' ')[0]}</button></div>`).join('');
+  lucide.createIcons();
+}
+
+/* ============ QUOTE ENGINE ============ */
+let quoteTab='car', quoteStep=1;
+const quoteState={car:{},bike:{},health:{},life:{}};
+$$('[data-quote-tab]').forEach(b=>b.addEventListener('click',()=>setQuoteTab(b.dataset.quoteTab)));
+function setQuoteTab(tab){quoteTab=tab;quoteStep=1;
+  $$('[data-quote-tab]').forEach(b=>{const on=b.dataset.quoteTab===tab;b.classList.toggle('active',on);b.setAttribute('aria-selected',on)});
+  renderDynamicFields();updateQuoteSteps();updateLive();
+}
+function updateQuoteSteps(){
+  ['1','2','3'].forEach(()=>{});
+  $$('#quoteStepsBar .step-item').forEach(el=>{const s=+el.dataset.step;el.classList.toggle('active',s===quoteStep);el.classList.toggle('done',s<quoteStep);el.querySelector('.step-dot').innerHTML=s<quoteStep?'<i data-lucide="check" class="w-3.5 h-3.5"></i>':s});
+  $('#quoteStep1').classList.toggle('hidden',quoteStep!==1);
+  $('#quoteStep2').classList.toggle('hidden',quoteStep!==2);
+  $('#quoteStep3').classList.toggle('hidden',quoteStep!==3);
+  $('#quoteBack').classList.toggle('hidden',quoteStep===1);
+  $('#quoteNext').innerHTML=quoteStep===1?'Continue <i data-lucide="arrow-right" class="w-4 h-4"></i>':quoteStep===2?'Get my estimate <i data-lucide="sparkles" class="w-4 h-4"></i>':'Start new quote <i data-lucide="refresh-ccw" class="w-4 h-4"></i>';
+  lucide.createIcons();
+}
+function renderDynamicFields(){
+  const c=$('#dynamicFields');const curYear=new Date().getFullYear();
+  const years=Array.from({length:10},(_,i)=>curYear-i).map(y=>`<option>${y}</option>`).join('');
+  if(quoteTab==='car'||quoteTab==='bike'){
+    const isCar=quoteTab==='car';
+    c.innerHTML=`
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div><label class="label">Registration year *</label><select id="qYear" class="select" onchange="updateLive()">${years}</select></div>
+      <div><label class="label">${isCar?'Car brand':'Bike brand'} *</label><select id="qBrand" class="select" onchange="updateLive()">${isCar?'<option>Maruti Suzuki</option><option>Hyundai</option><option>Tata</option><option>Mahindra</option><option>Kia</option><option>Honda</option><option>Toyota</option><option>Other</option>':'<option>Hero</option><option>Honda</option><option>Bajaj</option><option>TVS</option><option>Royal Enfield</option><option>Yamaha</option><option>Other</option>'}</select></div>
+      <div><label class="label">Fuel type</label><select id="qFuel" class="select" onchange="updateLive()">${isCar?'<option>Petrol</option><option>Diesel</option><option>CNG</option><option>Electric</option>':'<option>Petrol</option><option>Electric</option>'}</select></div>
+      <div><label class="label">City *</label><select id="qCity" class="select" onchange="updateLive()"><option value="metro">Metro — Delhi/Mumbai/Chennai</option><option value="tier1" selected>Tier-1 — Pune/Jaipur/Lucknow</option><option value="tier3">Tier-3 / Rural</option></select></div>
+      <div><label class="label">No-Claim Bonus (NCB)</label><select id="qNcb" class="select" onchange="updateLive()"><option value="0">0% — new / claimed</option><option value="20">20% — 1 yr claim-free</option><option value="25">25% — 2 yrs</option><option value="35">35% — 3 yrs</option><option value="45">45% — 4 yrs</option><option value="50">50% — 5+ yrs</option></select></div>
+      <div><label class="label">Policy type</label><select id="qPtype" class="select" onchange="updateLive()"><option value="comp">Comprehensive (recommended)</option><option value="tp">Third-party only</option></select></div>
+      <div class="sm:col-span-2"><label class="label">Insured Declared Value (IDV): <span id="qIdvLbl" class="text-teal">${isCar?'₹6,00,000':'₹85,000'}</span></label><input type="range" id="qIdv" min="${isCar?200000:30000}" max="${isCar?2000000:400000}" step="${isCar?25000:5000}" value="${isCar?600000:85000}" oninput="updateLive()"><div class="flex justify-between text-[11.5px] text-muted"><span>Lower IDV · lower premium</span><span>Fair market band</span></div></div>
+      <div class="sm:col-span-2"><label class="label">Add-ons (optional)</label><div class="grid sm:grid-cols-2 gap-2" id="qAddons">
+        ${['Zero depreciation','Roadside assistance','Engine protection','Consumables cover'].map((a,i)=>`<label class="checkbox-card"><input type="checkbox" value="${a}" ${i<1?'checked':''} onchange="this.closest('label').classList.toggle('selected',this.checked);updateLive()"> ${a}<span class="ml-auto text-[11.5px] text-muted">+${isCar?['₹2,400','₹900','₹1,600','₹1,100'][i]:['₹650','₹450','—','₹350'][i]}*</span></label>`).join('')}
+      </div></div>
+    </div>`;
+  }else if(quoteTab==='health'){
+    c.innerHTML=`
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div><label class="label">Cover amount: <span id="qCoverLbl" class="text-teal">₹10,00,000</span></label><input type="range" id="qCover" min="3" max="100" value="10" oninput="updateLive()"><div class="flex justify-between text-[11.5px] text-muted"><span>₹3L</span><span>₹1Cr</span></div></div>
+      <div><label class="label">Eldest member age: <span id="qAgeLbl" class="text-teal">35 yrs</span></label><input type="range" id="qAge" min="18" max="75" value="35" oninput="updateLive()"></div>
+      <div><label class="label">Who to cover? *</label><select id="qFam" class="select" onchange="updateLive()"><option value="1">Self only</option><option value="1.7">Self + Spouse</option><option value="2.1" selected>Family — 2A + 1K</option><option value="2.5">Family — 2A + 2K</option><option value="2.8">Family + Parent</option></select></div>
+      <div><label class="label">City tier</label><select id="qCityH" class="select" onchange="updateLive()"><option value="1.15">Metro</option><option value="1" selected>Tier-1 / Tier-2</option><option value="0.9">Tier-3 / Rural</option></select></div>
+      <div class="sm:col-span-2"><label class="label">Any pre-existing conditions?</label><div class="flex gap-2"><button type="button" class="tab-pill ped active" data-v="no" onclick="setPed(this)">No</button><button type="button" class="tab-pill ped" data-v="yes" onclick="setPed(this)">Yes / Not sure</button></div><p class="hint mt-1.5">Declaring conditions avoids claim rejection. Loading, if any, is decided by insurer medicals.</p></div>
+    </div>`;
+  }else{
+    c.innerHTML=`
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div><label class="label">Life cover: <span id="qLifeLbl" class="text-teal">₹1.00 Cr</span></label><input type="range" id="qLife" min="25" max="200" value="100" oninput="updateLive()"><div class="flex justify-between text-[11.5px] text-muted"><span>₹25L</span><span>₹2Cr</span></div></div>
+      <div><label class="label">Your age: <span id="qLAgeLbl" class="text-teal">30 yrs</span></label><input type="range" id="qLAge" min="18" max="60" value="30" oninput="updateLive()"></div>
+      <div><label class="label">Cover till age</label><select id="qTill" class="select" onchange="updateLive()"><option value="60">60 years</option><option value="65">65 years</option><option value="70" selected>70 years</option></select></div>
+      <div><label class="label">Tobacco / smoker?</label><select id="qSmoke" class="select" onchange="updateLive()"><option value="no" selected>No</option><option value="yes">Yes</option></select></div>
+      <div><label class="label">Gender</label><select id="qGender" class="select" onchange="updateLive()"><option>Male</option><option>Female</option><option>Other</option></select></div>
+      <div><label class="label">Annual income band</label><select id="qInc" class="select" onchange="updateLive()"><option>Under ₹5 Lakh</option><option selected>₹5–15 Lakh</option><option>₹15–30 Lakh</option><option>Above ₹30 Lakh</option></select></div>
+    </div>`;
+  }
+  lucide.createIcons();updateLive();
+}
+function setPed(btn){$$('.ped').forEach(b=>b.classList.remove('active'));btn.classList.add('active');updateLive()}
+function calcQuote(){
+  if(quoteTab==='car'||quoteTab==='bike'){
+    const isCar=quoteTab==='car';
+    const idv=+($('#qIdv')?.value||(isCar?600000:85000));
+    const year=+($('#qYear')?.value||2022);const age=new Date().getFullYear()-year;
+    const city=$('#qCity')?.value||'tier1';const ncb=+($('#qNcb')?.value||0);
+    const ptype=$('#qPtype')?.value||'comp';const fuel=$('#qFuel')?.value||'Petrol';
+    const addons=[...document.querySelectorAll('#qAddons input:checked')].map(i=>i.value);
+    let base;
+    if(ptype==='tp'){base=isCar?4500+idv*0.002:1800+idv*0.003}
+    else{base=idv*(isCar?0.031:0.042);base*= (1+age*0.02);if(city==='metro')base*=1.12;else if(city==='tier3')base*=0.94;if(fuel==='Electric')base*=0.93;if(fuel==='CNG')base*=1.05}
+    const ncbDisc=ptype==='comp'?base*(ncb/100)*0.55:0;
+    const addonRates=isCar?{'Zero depreciation':2400,'Roadside assistance':900,'Engine protection':1600,'Consumables cover':1100}:{'Zero depreciation':650,'Roadside assistance':450,'Engine protection':0,'Consumables cover':350};
+    let addonCost=0;if(ptype==='comp')addons.forEach(a=>addonCost+=addonRates[a]||0);
+    const net=Math.max(2500,base-ncbDisc+addonCost);const gst=net*0.18;const total=net+gst;
+    return{total,net,gst,breakdown:[['Own-damage / base',base],['NCB discount',-ncbDisc],['Add-ons ('+addons.length+')',addonCost],['GST @18%',gst]],meta:{idv,addons,ptype,ncb}};
+  }else if(quoteTab==='health'){
+    const coverL=+($('#qCover')?.value||10);const age=+($('#qAge')?.value||35);
+    const fam=+($('#qFam')?.value||2.1);const city=+($('#qCityH')?.value||1);
+    const ped=document.querySelector('.ped.active')?.dataset.v==='yes';
+    let perLakh=1650;if(age>45)perLakh=2650;else if(age>35)perLakh=2050;if(age>60)perLakh=4200;
+    let base=coverL*perLakh*0.62*fam*city;if(coverL>25)base*=0.82;if(ped)base*=1.12;
+    const gst=base*0.18;const total=base+gst;
+    return{total,net:base,gst,breakdown:[['Base cover ('+coverL+'L) × family factor',base*0.88],['Age & city loading',base*0.12],['GST @18%',gst]],meta:{coverL,age}};
+  }else{
+    const coverL=+($('#qLife')?.value||100);const age=+($('#qLAge')?.value||30);
+    const smoke=$('#qSmoke')?.value==='yes';const till=+($('#qTill')?.value||70);
+    let perLakh=92;if(age>40)perLakh=185;else if(age>35)perLakh=135;else if(age>30)perLakh=108;
+    if(smoke)perLakh*=1.55;if(till===70)perLakh*=1.12;else if(till===60)perLakh*=0.9;
+    if($('#qGender')?.value==='Female')perLakh*=0.95;
+    const base=coverL*perLakh;const gst=base*0.18;const total=base+gst;
+    return{total,net:base,gst,breakdown:[['Mortality & term cost',base],['GST @18%',gst]],meta:{coverL,age,smoke}};
+  }
+}
+function updateLive(){
+  try{
+    // update labels
+    if($('#qIdv'))$('#qIdvLbl').textContent=fmtINR(+$('#qIdv').value);
+    if($('#qCover'))$('#qCoverLbl').textContent=fmtINR(+$('#qCover').value*100000);
+    if($('#qAge'))$('#qAgeLbl').textContent=$('#qAge').value+' yrs';
+    if($('#qLife'))$('#qLifeLbl').textContent='₹'+(+$('#qLife').value/100).toFixed(2)+' Cr';
+    if($('#qLAge'))$('#qLAgeLbl').textContent=$('#qLAge').value+' yrs';
+    const q=calcQuote();$('#liveEstimate').textContent=fmtINR(q.total);
+  }catch(e){}
+}
+function validMobile(m){return /^[6-9]\d{9}$/.test(m)}function validPin(p){return /^[1-9]\d{5}$/.test(p)}
+function quoteNav(dir){
+  if(quoteStep===3&&dir===1){quoteStep=1;updateQuoteSteps();updateLive();return}
+  if(dir===1){
+    if(quoteStep===1){quoteStep=2}
+    else if(quoteStep===2){
+      const n=$('#qName').value.trim(),m=$('#qMobile').value.trim(),p=$('#qPin').value.trim(),e=$('#qEmail').value.trim();
+      let ok=true;
+      [['#qName',n.length>=3],['#qMobile',validMobile(m)],['#qPin',validPin(p)]].forEach(([id,v])=>{$(id).classList.toggle('error',!v);if(!v)ok=false});
+      if(e&&!/^\S+@\S+\.\S+$/.test(e)){$('#qEmail').classList.add('error');ok=false}else $('#qEmail').classList.remove('error');
+      if(!$('#qConsent').checked){toast('Please accept contact consent to receive your illustration.','error');return}
+      if(!ok){toast('Please check name, mobile (10-digit) and pincode.','error');return}
+      buildResult(n,m,p);quoteStep=3;
+      try{const leads=JSON.parse(localStorage.getItem('luna_leads')||'[]');leads.push({tab:quoteTab,name:n,mobile:m,pin:p,at:new Date().toISOString(),premium:Math.round(calcQuote().total)});localStorage.setItem('luna_leads',JSON.stringify(leads))}catch(e){}
+    }
+  }else{quoteStep=Math.max(1,quoteStep-1)}
+  updateQuoteSteps();lucide.createIcons();
+  if(quoteStep===3)$('#quoteResult').scrollIntoView({behavior:reducedMotion?'auto':'smooth',block:'nearest'});
+}
+function buildResult(name,mobile,pin){
+  const q=calcQuote();const lo=q.total*0.93,hi=q.total*1.08;
+  const titles={car:'Car Insurance',bike:'Bike Insurance',health:'Health Insurance',life:'Term Life Insurance'};
+  const plans={
+    car:[['Essential Drive','Third-party + own damage, standard IDV','Cashless garages*'],['Comfort Drive','+ Zero-dep & roadside assistance','Higher IDV band'],['Premier Drive','+ Engine, consumables & return-to-invoice*','Priority survey']],
+    bike:[['Essential Ride','TP + own damage cover','Quick renewal'],['Comfort Ride','+ Zero-dep & roadside','Theft assistance'],['Tourer','+ Higher PA & accessories*','Pan-India support']],
+    health:[['Essential Health','Cashless + day-care, standard room','2-yr named waiting'],['Family Comfort','+ Restoration & no-claim bonus','Wider hospital list*'],['Premier Health','+ Low waiting & high no-limit* options','Annual check-up']],
+    life:[['Pure Term','Life cover till 60/70','Nominee support'],['Term + CI','+ Critical illness rider','Waiver options'],['Term Max','+ Accidental & waiver riders','Longest term']]
+  }[quoteTab];
+  $('#quoteResult').innerHTML=`
+  <div class="bg-tealLight border border-[#BFD9D5] rounded-lg p-4 flex gap-3 items-start"><span class="w-10 h-10 rounded-full bg-teal text-white flex items-center justify-center shrink-0"><i data-lucide="check" class="w-5 h-5"></i></span>
+  <div><p class="font-bold text-navy">Thank you, ${name.split(' ')[0]}! Your ${titles[quoteTab]} illustration is ready.</p><p class="text-[13px] text-muted">For ${mobile} · Pincode ${pin} · Ref: LUNA-Q-${Math.floor(100000+Math.random()*900000)}</p></div></div>
+  <div class="grid md:grid-cols-[1fr_260px] gap-5 mt-5">
+    <div>
+      <div class="flex items-end gap-2 flex-wrap"><p class="font-display font-bold text-navy text-[34px] leading-none">${fmtINR(q.total)}</p><p class="text-muted text-[14px] mb-1">/ year illustrative</p><span class="ml-auto text-[12px] bg-goldSoft text-navy font-bold px-2.5 py-1 rounded">Range ${fmtINR(lo)} – ${fmtINR(hi)}</span></div>
+      <div class="mt-4 border border-line rounded-lg overflow-hidden">${q.breakdown.map(([k,v])=>`<div class="flex justify-between px-4 py-2.5 text-[13.5px] border-b border-line/70 last:border-0 ${v<0?'text-teal':''}"><span class="text-muted">${k}</span><strong class="text-navy">${v<0?'− ':''}${fmtINR(Math.abs(v))}</strong></div>`).join('')}</div>
+      <p class="hint mt-2">Final premium after insurer underwriting, inspection / medicals and discounts.</p>
+      <div class="grid sm:grid-cols-3 gap-3 mt-4">${plans.map((p,i)=>`<div class="border ${i===1?'border-teal shadow-subtle bg-tealLight/40':'border-line'} rounded-lg p-3.5 relative">${i===1?'<span class="absolute -top-2.5 left-3 bg-teal text-white text-[10.5px] font-bold px-2 py-0.5 rounded">RECOMMENDED</span>':''}<p class="font-bold text-navy text-[13.5px]">${p[0]}</p><p class="text-[12px] text-muted mt-1">${p[1]}</p><p class="text-[12px] font-semibold text-teal mt-1.5">${p[2]}</p><p class="font-bold text-navy text-[14px] mt-2">${fmtINR(q.total*(i===0?0.92:i===1?1:1.14))}<span class="text-[11px] text-muted font-semibold"> /yr*</span></p></div>`).join('')}</div>
+    </div>
+    <div class="space-y-3">
+      <div class="card p-4 bg-navy !border-navy text-white"><p class="font-bold text-[14px]">Next step</p><p class="text-[12.5px] text-white/70 mt-1">An advisor can confirm exact premium & issue policy in one call.</p><button class="btn btn-gold btn-sm w-full mt-3" onclick="openModal('callbackModal')">Talk to advisor</button><button class="btn btn-white-outline btn-sm w-full mt-2" onclick="toast('Illustration PDF will be sent to your mobile & email.','success')">Download illustration</button></div>
+      <div class="card p-4"><p class="font-bold text-navy text-[13.5px] flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-teal"></i> Why this is fair</p><ul class="text-[12.5px] text-muted mt-2 space-y-1"><li>• IDV / cover in market band</li><li>• NCB & loadings shown separately</li><li>• GST disclosed upfront</li></ul></div>
+    </div>
+  </div>`;
+  lucide.createIcons();
+}
+
+/* ============ COMPARE ============ */
+const cmpData={
+ health:{head:['Feature','Essential<br><span class="text-goldSoft font-semibold">₹9,800*/yr</span>','Comfort<br><span class="text-goldSoft font-semibold">₹14,200*/yr</span>','Premier<br><span class="text-goldSoft font-semibold">₹19,500*/yr</span>'],rows:[['Sum insured','₹5 Lakh','₹10 Lakh','₹25 Lakh'],['Cashless hospitals*','Wide network','Wider network','Widest + premium'],['Room rent limit','1% / day','Single private room','No capping*'],['Pre-existing waiting','4 years','3 years','2 years'],['Restoration benefit','—','✓ Once / year','✓ Unlimited*'],['Annual check-up','—','✓','✓ + full panel']]},
+ term:{head:['Feature','Pure Term<br><span class="text-goldSoft font-semibold">₹9,600*/yr</span>','Term + CI<br><span class="text-goldSoft font-semibold">₹14,800*/yr</span>','Term Max<br><span class="text-goldSoft font-semibold">₹18,200*/yr</span>'],rows:[['Life cover (30, non-smoker)','₹1 Cr','₹1 Cr','₹1 Cr'],['Cover till','70 yrs','70 yrs','70 yrs'],['Critical illness rider','—','₹25 Lakh','₹50 Lakh'],['Accidental rider','—','—','₹1 Cr'],['Waiver of premium','—','✓','✓'],['Claim support','Advisor + nominee help','Priority desk','Dedicated manager*']]},
+ motor:{head:['Feature','Third-party<br><span class="text-goldSoft font-semibold">₹4,500*/yr</span>','Comprehensive<br><span class="text-goldSoft font-semibold">₹12,400*/yr</span>','Comp. + Zero-dep<br><span class="text-goldSoft font-semibold">₹15,900*/yr</span>'],rows:[['Third-party liability','✓ Mandatory','✓','✓'],['Own damage','✕','✓','✓'],['Zero depreciation','✕','Optional','✓ Included'],['Roadside assistance','✕','Optional','✓'],['NCB protection*','✕','Optional','✓'],['Cashless garages*','—','Wide','Widest']]}
+};
+function renderCompare(key,btn){
+  $$('[data-cmp]').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');
+  const d=cmpData[key];
+  $('#compareTable').innerHTML=`<thead><tr>${d.head.map((h,i)=>`<th class="${i===0?'w-[220px]':''}">${h}</th>`).join('')}</tr></thead><tbody>${d.rows.map(r=>`<tr>${r.map((c,i)=>`<td class="${i===0?'font-bold text-navy bg-offwhite/60':''}">${c}</td>`).join('')}</tr>`).join('')}</tbody>`;
+}
+
+/* ============ CLAIMS ============ */
+const claimStages=['Intimated','Documents verified','Survey / Assessment','Approved','Settled / Paid'];
+function claimStatus(id){
+  let h=0;for(const ch of id)h=(h*31+ch.charCodeAt(0))%997;
+  const stage=Math.min(4,Math.floor((h%100)/20));const amt=25000+(h%180)*1000;
+  return{stage,amt,type:id.includes('H')?'Health':id.includes('M')?'Motor':'General',date:new Date(Date.now()-stage*3*864e5).toLocaleDateString('en-IN',{day:'numeric',month:'short'})}
+}
+function trackClaim(inputId,outId){
+  const id=($('#'+inputId).value||'').trim().toUpperCase();
+  const out=$('#'+outId);
+  if(!/^LUNA-[A-Z0-9]{4,8}$/.test(id)){out.innerHTML=`<div class="bg-red-50 border border-red-200 text-red-700 text-[13px] rounded-lg p-3.5">Please enter a valid ID like <strong>LUNA-248190</strong>. <button class="underline font-bold" onclick="fillDemoClaim('${inputId}')">Use demo ID</button></div>`;return}
+  const s=claimStatus(id);
+  out.innerHTML=`<div class="border border-line rounded-lg p-4 bg-offwhite">
+    <div class="flex justify-between items-center flex-wrap gap-2"><div><p class="font-bold text-navy text-[14.5px]">${id}</p><p class="text-[12.5px] text-muted">${s.type} claim · Filed ${s.date} · Est. ${fmtINR(s.amt)}</p></div><span class="text-[11.5px] font-bold ${s.stage===4?'bg-teal text-white':'bg-goldSoft text-navy'} px-2.5 py-1 rounded">${claimStages[s.stage].toUpperCase()}</span></div>
+    <div class="mt-4">${claimStages.map((st,i)=>`<div class="tl-item ${i<s.stage?'done':i===s.stage?'current':''} flex gap-3"><div class="flex flex-col items-center"><span class="tl-dot">${i<s.stage?'<i data-lucide="check" class="w-3.5 h-3.5"></i>':i===s.stage?'<i data-lucide="loader" class="w-3.5 h-3.5"></i>':'<span class="text-[11px] font-bold">'+(i+1)+'</span>'}</span>${i<4?'<span class="tl-line"></span>':''}</div><div class="pb-4"><p class="text-[13.5px] font-bold ${i<=s.stage?'text-navy':'text-muted'}">${st}</p><p class="text-[12px] text-muted">${i<s.stage?'Completed':i===s.stage?'In progress — advisor assigned':'Pending'}</p></div></div>`).join('')}</div>
+    <div class="flex gap-2"><button class="btn btn-outline btn-sm flex-1" onclick="openModal('callbackModal')">Talk to claims desk</button><button class="btn btn-navy btn-sm flex-1" onclick="toast('Latest claim statement sent to your registered mobile.','success')">Get statement</button></div>
+  </div>`;lucide.createIcons();
+}
+function fillDemoClaim(inputId){const ids=['LUNA-248190','LUNA-77120H','LUNA-93M40'];const id=ids[Math.floor(Math.random()*ids.length)];if(inputId){$('#'+inputId).value=id;trackClaim(inputId,inputId==='homeClaimId'?'homeClaimResult':'pageClaimResult')}else{$('#pageClaimId').value=ids[0];trackClaim('pageClaimId','pageClaimResult')}}
+function renderStaticJourney(){$('#claimJourneyStatic').innerHTML=claimStages.map((st,i)=>`<div class="tl-item ${i<2?'done':i===2?'current':''} flex gap-3"><div class="flex flex-col items-center"><span class="tl-dot !border-line">${i<2?'<i data-lucide="check" class="w-3.5 h-3.5"></i>':(i+1)}</span>${i<4?'<span class="tl-line"></span>':''}</div><div class="pb-3"><p class="text-[13.5px] font-bold text-navy">${st}</p><p class="text-[12px] text-muted">${['Call / online form','Bills, ID, policy copy','Garage / TPA review','Insurer decision','NEFT / cashless'][i]}</p></div></div>`).join('')}
+function fileClaim(){
+  const n=$('#cName').value.trim(),m=$('#cMobile').value.trim(),p=$('#cPolicy').value.trim(),d=$('#cDesc').value.trim(),dt=$('#cDate').value;
+  if(!n||!validMobile(m)||!p||!d||!dt){toast('Please fill name, valid mobile, policy no., date and description.','error');return}
+  const id='LUNA-'+Math.floor(100000+Math.random()*899999);
+  $('#fileClaimOut').innerHTML=`<div class="bg-tealLight border border-[#BFD9D5] rounded-lg p-4"><p class="font-bold text-navy flex items-center gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-teal"></i> Intimation received — ${id}</p><p class="text-[13px] text-muted mt-1">Type: ${$('#cType').value} · Our claims desk will call ${m} within 2 working hours. Save this ID to track.</p><div class="flex gap-2 mt-3"><button class="btn btn-navy btn-sm" onclick="$('#pageClaimId').value='${id}';trackClaim('pageClaimId','pageClaimResult');document.getElementById('trackClaim').scrollIntoView({behavior:'smooth'})">Track now</button><button class="btn btn-outline btn-sm" onclick="toast('Checklist PDF sent to ${m}.','success')">Send checklist</button></div></div>`;
+  lucide.createIcons();toast('Claim '+id+' registered successfully.');
+  $$('#docCheck input').forEach(i=>i.checked=false);
+}
+
+/* ============ HEALTH / LIFE / SIP CALCS ============ */
+function calcHealth(){
+  const L=+$('#hCover').value,age=+$('#hAge').value,fam=+$('#hFam').value,city=+$('#hCity').value;
+  $('#hCoverLbl').textContent=fmtINR(L*100000);$('#hAgeLbl').textContent=age+' yrs';
+  let per=1650;if(age>45)per=2650;else if(age>35)per=2050;if(age>60)per=4200;
+  let base=L*per*0.62*fam*city;if(L>25)base*=0.82;const tot=base*1.18;
+  $('#hOut').innerHTML=fmtINR(tot)+'<span class="text-[15px] font-sans font-semibold text-muted"> / year</span>';$('#hOutM').textContent=fmtINR(tot/12);
+}
+function calcLife(){
+  const inc=+$('#lInc').value*100000,loan=+$('#lLoan').value*100000,goal=+$('#lGoal').value*100000,ex=+$('#lExist').value;
+  $('#lIncLbl').textContent=fmtINR(inc);$('#lLoanLbl').textContent=fmtINR(loan);$('#lGoalLbl').textContent=fmtINR(goal);
+  const need=Math.max(2500000,inc*15+loan+goal-ex);
+  $('#lOut').textContent=need>=10000000?'₹'+(need/10000000).toFixed(2)+' Cr':fmtINR(need);
+}
+function inrShort(n){if(n>=10000000)return '₹'+(n/10000000).toFixed(1)+'Cr';if(n>=100000)return '₹'+(n/100000).toFixed(1)+'L';return fmtINR(n)}
+function calcSIP(){
+  const P=+$('#sAmt').value,Y=+$('#sYr').value,R=+$('#sRet').value;
+  $('#sAmtLbl').textContent=fmtINR(P);$('#sYrLbl').textContent=Y+' years';$('#sRetLbl').textContent=R+'% p.a.';
+  const r=R/100/12,n=Y*12;const fv=P*((Math.pow(1+r,n)-1)/r)*(1+r);const inv=P*n;
+  $('#sipInv').textContent=inrShort(inv);$('#sipGain').textContent=inrShort(fv-inv);$('#sipTot').textContent=inrShort(fv);
+  const cv=$('#sipChart');if(!cv)return;const ctx=cv.getContext('2d');const W=cv.width=cv.offsetWidth*2,H=cv.height=240;ctx.clearRect(0,0,W,H);
+  const max=fv;const bars=12;const bw=W/(bars*1.6);
+  for(let i=1;i<=bars;i++){const yy=Y*i/bars,nn=Math.round(yy*12);const v=P*((Math.pow(1+r,nn)-1)/r)*(1+r);const h=(v/max)*(H-50);
+    ctx.fillStyle=i===bars?'#0B1F33':'#0F766E';ctx.globalAlpha=i===bars?1:.75;
+    const x=(i-1)*(W/bars)+(W/bars-bw)/2;ctx.beginPath();ctx.roundRect?ctx.roundRect(x,H-30-h,bw,h,8):ctx.rect(x,H-30-h,bw,h);ctx.fill();ctx.globalAlpha=1;
+    ctx.fillStyle='#5E6B75';ctx.font='20px Inter';ctx.textAlign='center';if(i%3===0||i===bars)ctx.fillText(Math.round(yy)+'y',x+bw/2,H-8);
+  }
+}
+let riskSel=[];
+document.addEventListener('click',e=>{const q=e.target.closest('.risk-q');if(!q)return;
+  // group: siblings
+  const parent=q.parentElement;parent.querySelectorAll('.risk-q').forEach(b=>b.classList.remove('active'));q.classList.add('active');
+});
+function evalRisk(){
+  const actives=[...document.querySelectorAll('.risk-q.active')];
+  if(actives.length<3){toast('Please answer all 3 questions.','error');return}
+  const s=actives.reduce((a,b)=>a+ +b.dataset.s,0);
+  const out=$('#riskOut');out.classList.remove('hidden');
+  out.innerHTML=s<=4?'<strong class="text-navy">Conservative profile.</strong> Consider guaranteed endowment / money-back style plans and keep market exposure low. Review lock-ins and surrender value.':s<=7?'<strong class="text-navy">Balanced profile.</strong> A mix of guaranteed + balanced ULIP funds may suit long goals. Rebalance yearly and check fund charges.':'<strong class="text-navy">Growth-oriented profile.</strong> Long-horizon equity-oriented ULIPs could be explored — only with 10+ year horizon, emergency fund ready and full risk acceptance.';
+}
+
+/* ============ FAQ ============ */
+const faqs=[
+ ['Is LUNA Insurance an insurance company or a broker?','LUNA Insurance is a marketplace that helps you compare products from IRDAI-registered insurers, understand wordings and get servicing support. Your policy contract is issued by the insurer you choose; we assist with selection, application and claims coordination.'],
+ ['How is premium decided? Why does it differ across insurers?','Premium depends on cover, age, city, vehicle variant/IDV, medical profile, add-ons, discounts like NCB and insurer underwriting. That is why two quotes for “₹10 lakh health cover” can differ — benefits and limits also differ. Always compare features, not just price.'],
+ ['What is the free-look period?','For most life and health policies, IRDAI norms provide a free-look period (commonly 30 days from receipt of policy) to review terms. If you disagree with conditions, you can return the policy for a refund after permitted deductions. Check your specific wording.'],
+ ['Can I port my health policy to another insurer?','Yes. Health portability lets you switch insurers at renewal while carrying forward waiting-period credits as per IRDAI portability norms. Apply at least 30–45 days before renewal so medicals and approvals complete in time.'],
+ ['Will a small car claim affect my NCB?','Yes — typically one own-damage claim in a policy year resets NCB at next renewal. For very small damages below your potential NCB saving + deductible, paying yourself can be smarter. Ask us to compare before filing.'],
+ ['What documents are needed for a term life claim?','Generally: claim form, death certificate, policy document, nominee ID + bank details, and medical/hospital records if applicable. Early claims may need additional verification. We provide a checklist and follow up with the insurer.'],
+ ['Do you charge extra for advice or claims help?','Product comparison and standard servicing assistance carry no separate fee from us; we earn standard insurer-permitted commission, disclosed on request. Any statutory charges (e.g., medicals, inspection) are as applicable and receipted.'],
+ ['How do I complain if my claim is delayed or rejected?','First, get a written decision/claim number from the insurer. Escalate to the insurer grievance cell, then to IRDAI Bima Bharosa and the Insurance Ombudsman if unresolved within 30 days. LUNA helps draft and track each stage.'],
+];
+function renderFaq(){$('#homeFaq').innerHTML=faqs.map((f,i)=>`<div class="faq-item ${i===0?'open':''} reveal"><button class="faq-q" aria-expanded="${i===0}" onclick="toggleFaq(this)"><span>${f[0]}</span><span class="faq-icon"><i data-lucide="plus" class="w-4 h-4"></i></span></button><div class="faq-a"><p class="px-[18px] pb-[18px] text-[14px] text-muted leading-relaxed">${f[1]}</p></div></div>`).join('');lucide.createIcons()}
+function toggleFaq(btn){const item=btn.closest('.faq-item');const open=item.classList.contains('open');$$('#homeFaq .faq-item').forEach(f=>{f.classList.remove('open');f.querySelector('.faq-q').setAttribute('aria-expanded','false')});if(!open){item.classList.add('open');btn.setAttribute('aria-expanded','true')}}
+
+/* ============ PERSONA ============ */
+function switchPersona(btn,key){$$('#digital .tab-pill').forEach(b=>b.classList.remove('active'));btn.classList.add('active');$$('.persona').forEach(p=>p.classList.add('hidden'));$('#persona-'+key).classList.remove('hidden')}
+
+/* ============ POLICY MODAL ============ */
+const policyInfo={
+ car:{t:'Car Insurance — What to check',b:['Own-damage + third-party liability structure','IDV band as per vehicle age','Zero-dep, engine, consumables & RSA add-ons'],e:['Wear & tear, mechanical failure','Driving without valid licence / under influence','Delay in intimation beyond insurer limits'],d:['RC copy','Previous policy (for NCB)','KYC + inspection photos']},
+ bike:{t:'Bike Insurance — What to check',b:['Mandatory third-party + own-damage option','Personal accident cover for owner-driver','Zero-dep useful for new bikes'],e:['Racing / commercial misuse','Undeclared modifications','Lapsed policy theft claims*'],d:['RC copy','KYC','Previous policy']},
+ health:{t:'Health Insurance — What to check',b:['Cashless + reimbursement hospitalisation','Day-care, ambulance, pre/post-hospitalisation','Restoration, NCB/super NCB, check-ups'],e:['Initial 30-day wait (except accident)','Named & PED waiting periods','Cosmetic, dental (unless accidental), infertility*'],d:['KYC + proposer details','Medical declarations / reports','Previous policy for portability']},
+ life:{t:'Life / Term Insurance — What to check',b:['Sum assured till chosen age','Critical illness, accidental & waiver riders','Nominee + succession clarity'],e:['Non-disclosure of health/habits','Suicide exclusion (first year, as per wording)','Unpaid / lapsed policy'],d:['KYC + income proof','Medicals / tele-verification','Nominee details']},
+ insurance:{t:'Travel & Home — What to check',b:['Medical, baggage, delay & cancellation (travel)','Structure + contents (home)','Add-ons: valuables, tenants liability'],e:['Pre-existing travel advisories*','Wear, seepage over time (home)','Undeclared high-value items'],d:['Trip details / property details','KYC','Valuation bills where needed']},
+ investment:{t:'Investment-linked Plans — What to check',b:['Goal mapping + illustration at 4% & 8%*','Fund options & switching rules','Lock-in, surrender & free-look terms'],e:['Market risk — returns not guaranteed','Heavy early surrender penalties','Skipped premium consequences'],d:['KYC + income proof','Risk profile form','Nominee details']}
+};
+function openPolicy(key){
+  const p=policyInfo[key]||policyInfo.insurance;
+  $('#policyContent').innerHTML=`<span class="eyebrow">Policy guide</span><h3 class="font-display font-semibold text-navy text-[24px] mt-2">${p.t}</h3>
+  <div class="grid md:grid-cols-3 gap-4 mt-5">
+    <div class="bg-tealLight border border-[#BFD9D5] rounded-lg p-4"><p class="font-bold text-navy text-[14px] flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-teal"></i> Inclusions</p><ul class="text-[13px] text-navy/80 mt-2 space-y-1.5">${p.b.map(x=>`<li>• ${x}</li>`).join('')}</ul></div>
+    <div class="bg-red-50/60 border border-red-100 rounded-lg p-4"><p class="font-bold text-navy text-[14px] flex items-center gap-1.5"><i data-lucide="x-circle" class="w-4 h-4 text-red-500"></i> Exclusions*</p><ul class="text-[13px] text-navy/80 mt-2 space-y-1.5">${p.e.map(x=>`<li>• ${x}</li>`).join('')}</ul></div>
+    <div class="bg-goldSoft/50 border border-gold/40 rounded-lg p-4"><p class="font-bold text-navy text-[14px] flex items-center gap-1.5"><i data-lucide="folder-open" class="w-4 h-4"></i> Documents</p><ul class="text-[13px] text-navy/80 mt-2 space-y-1.5">${p.d.map(x=>`<li>• ${x}</li>`).join('')}</ul></div>
+  </div>
+  <p class="hint mt-3">*Summarised from standard market wordings. Your insurer's policy document prevails.</p>
+  <div class="flex flex-wrap gap-3 mt-5"><button class="btn btn-teal" onclick="closeModal('policyModal');goQuote('${key==='insurance'?'health':key==='investment'?'life':key}')">Get quote for this <i data-lucide="arrow-right" class="w-4 h-4"></i></button><button class="btn btn-outline" onclick="closeModal('policyModal');openModal('callbackModal')">Ask an advisor</button></div>`;
+  openModal('policyModal');
+}
+
+/* ============ ARTICLES ============ */
+const articles=[
+ {tag:'Health · 6 min read',title:'Waiting periods, room rent limits & deductibles — what they really mean',img:'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=70',body:`<p>Two policies with the same ₹5 lakh sum insured can pay very differently. The difference usually hides in three clauses.</p><h4>1. Waiting periods</h4><p>Most health policies have a 30-day initial wait (accidents excepted), 1–2 years for named procedures like cataract or hernia, and 2–4 years for pre-existing diseases. Portability can carry forward credits — plan switches 30–45 days before renewal.</p><h4>2. Room rent & disease-wise caps</h4><p>A 1%-per-day room cap on a ₹5 lakh policy means ₹5,000/day. Breach it, and the insurer may proportionately cut the whole bill — not just room charges. Single-private-room or no-capping plans avoid this, at higher premium.</p><h4>3. Deductibles & co-pay</h4><p>A deductible is what you pay first (common in top-ups); co-pay is your fixed share (e.g., 10–20%, common in senior plans). Both lower premium but raise out-of-pocket cost. Match them to your emergency fund.</p><p><strong>LUNA tip:</strong> Compare these three columns before premium. Our comparison view does exactly that.</p>`},
+ {tag:'Motor · 5 min read',title:'IDV, NCB and zero-depreciation: get your car renewal right',img:'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=70',body:`<p>Renewal is not just “pay and forget”. Three choices decide whether your next claim feels smooth.</p><h4>1. IDV — the honest middle</h4><p>IDV should track market value minus depreciation (~95% in year 1, ~70% by year 3, ~50% after 5 years). Too low saves a little premium but cuts theft/total-loss payout.</p><h4>2. NCB — protect the streak</h4><p>20% → 50% discount on own-damage premium is valuable. Renew before expiry, transfer NCB when you sell/buy, and think twice before claiming tiny dents.</p><h4>3. Zero-dep — worth it when?</h4><p>For cars under 5 years, zero-depreciation avoids 30–50% cuts on plastic/fibre parts. Pair with roadside assistance; add engine cover if you drive through waterlogged routes.</p><p><strong>Checklist:</strong> correct IDV → carry NCB → confirm add-ons → verify nominee, address & NCB certificate.</p>`},
+ {tag:'Life · 7 min read',title:'How much term cover is enough? The 15× rule and beyond',img:'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=70',body:`<p>A thumb rule used by planners: <strong>15× annual income + loans + goals − existing assets</strong>. Here's how to apply it calmly.</p><h4>Step 1 — Income replacement</h4><p>₹12 lakh income → ₹1.8 Cr base. This funds ~15 years of household expenses if invested conservatively.</p><h4>Step 2 — Add loans & goals</h4><p>Add outstanding home/personal loans plus education or marriage goals. Subtract liquid assets and existing covers (including employer group cover — remember it ends with the job).</p><h4>Step 3 — Choose term & riders</h4><p>Cover till retirement (60–70). Add critical illness if family history warrants, accidental rider for commuters, and waiver of premium to keep cover alive during disability.</p><p><strong>Review trigger:</strong> marriage, childbirth, new loan, salary jump — revisit cover every 3 years.</p>`}
+];
+function openArticle(i){
+  const a=articles[i];
+  $('#articleContent').innerHTML=`<div class="relative"><img src="${a.img}" alt="${a.title}" class="w-full h-[220px] sm:h-[280px] object-cover"><button class="absolute top-4 right-4 w-9 h-9 rounded-md bg-white flex items-center justify-center shadow" onclick="closeModal('articleModal')" aria-label="Close"><i data-lucide="x" class="w-4 h-4"></i></button><span class="absolute bottom-4 left-5 text-[11.5px] font-bold tracking-widest uppercase text-teal bg-white px-2.5 py-1 rounded shadow">${a.tag}</span></div><div class="p-6 sm:p-8 prose-luna"><h3 class="font-display font-semibold text-navy text-[24px] leading-snug">${a.title}</h3><div class="mt-4 text-[14.5px] text-muted space-y-3 leading-relaxed guide-body">${a.body}</div><div class="flex flex-wrap gap-3 mt-6 pt-5 border-t border-line"><button class="btn btn-teal btn-sm" onclick="closeModal('articleModal');goQuote('life')">Apply this — get quote</button><button class="btn btn-outline btn-sm" onclick="closeModal('articleModal');openModal('callbackModal')">Discuss with advisor</button></div></div>
+  <style>.guide-body h4{color:#0B1F33;font-weight:800;margin-top:14px}</style>`;
+  openModal('articleModal');
+}
+
+/* ============ LEGAL ============ */
+const legal={
+ privacy:{t:'Privacy Policy (summary)',b:`<p><strong class="text-navy">What we collect:</strong> contact details, quote inputs (vehicle, health, income bands), KYC/documents you upload, and communication records — only with your consent.</p><p><strong class="text-navy">Why:</strong> to prepare illustrations, process applications via insurers, service renewals/claims and meet legal/regulatory needs.</p><p><strong class="text-navy">Sharing:</strong> with chosen insurers, TPAs/surveyors and payment gateways as needed to fulfil your request; never sold for marketing. You may request access, correction or deletion (subject to legal retention).</p><p><strong class="text-navy">Security:</strong> consent-based access, encrypted transmission and role-limited internal access. Report concerns to care@lunainsurance.example.</p>`},
+ terms:{t:'Terms of Use (summary)',b:`<p>By using LUNA Insurance you agree that: (1) content is educational; insurer wordings prevail; (2) quotes are illustrative until underwriting; (3) you will provide true disclosures — misrepresentation can void claims; (4) we may contact you about your requests per your consent; (5) disputes are subject to Indian law and courts at New Delhi, after grievance redressal steps.</p>`},
+ grievance:{t:'Grievance Redressal',b:`<p><strong class="text-navy">Level 1 — LUNA:</strong> write to grievance@lunainsurance.example with policy/claim ID. Acknowledgement within 2 working days; resolution target 14 days.</p><p><strong class="text-navy">Level 2 — Insurer:</strong> approach the insurer's grievance cell with written complaint number.</p><p><strong class="text-navy">Level 3 — Regulator:</strong> IRDAI Bima Bharosa portal and the Insurance Ombudsman (for claim/rejection delays beyond 30 days or up to prescribed limits).</p>`},
+ disclosure:{t:'Corporate & Regulatory Disclosures',b:`<p>LUNA Insurance operates as an insurance marketplace assisting comparison and servicing of products from IRDAI-registered insurers. Final solicitation documents are the insurer's proposal form, benefit illustration and policy wording.</p><p>Commission/remuneration, where applicable, is as permitted by IRDAI and disclosed on request. Detailed CIN, registered office and officer particulars are maintained here and updated as registrations progress. Nothing on this site is investment advice; market-linked products carry risk — read all documents carefully.</p>`}
+};
+function showLegal(key,btn){if(btn){$$('.legal-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}else{$$('.legal-tab').forEach(b=>b.classList.toggle('active',b.dataset.legal===key))}$('#legalContent').innerHTML=`<h3 class="font-display font-semibold text-navy text-[22px] mb-3">${legal[key].t}</h3><div class="space-y-3">${legal[key].b}</div>`}
+
+/* ============ SEARCH ============ */
+const searchIndex=[
+ {t:'Health insurance waiting periods',d:'30-day, named & PED waits explained',r:'health'},{t:'Family floater vs individual',d:'Which suits your family size',r:'health'},{t:'Car insurance IDV',d:'How to pick fair IDV band',r:'motor'},{t:'No-Claim Bonus (NCB)',d:'20% to 50% transfer rules',r:'motor'},{t:'Zero depreciation add-on',d:'Worth it for cars under 5 yrs',r:'motor'},{t:'Term insurance cover size',d:'15× income rule calculator',r:'life'},{t:'Critical illness rider',d:'Lump sum on diagnosis',r:'life'},{t:'ULIP charges & lock-in',d:'5-year lock-in, fund charges',r:'investment'},{t:'Retirement planning',d:'Pension & annuity basics',r:'investment'},{t:'File a health claim',d:'Cashless & reimbursement steps',r:'claims'},{t:'Track claim status',d:'Enter LUNA claim ID',r:'claims',a:'trackClaim'},{t:'Port health policy',d:'Carry waiting credits',r:'health'},{t:'Compare plans side-by-side',d:'Health, term & motor matrix',r:'home',a:'compare'},{t:'Get instant quote',d:'Car, bike, health, life',r:'home',a:'quoteSection'},{t:'Contact support',d:'1800 419 0000 · email',r:'contact'},
+];
+function openSearch(){$('#searchOverlay').classList.add('open');document.body.style.overflow='hidden';renderSearch('');setTimeout(()=>$('#searchInput').focus(),80)}
+function closeSearch(){$('#searchOverlay').classList.remove('open');document.body.style.overflow='';$('#searchInput').value=''}
+function renderSearch(q){
+  q=(q||'').toLowerCase().trim();
+  const res=searchIndex.filter(x=>!q||x.t.toLowerCase().includes(q)||x.d.toLowerCase().includes(q));
+  $('#searchResults').innerHTML=res.length?res.map((x,i)=>`<button class="w-full text-left p-3 rounded-lg hover:bg-offwhite flex gap-3 items-center" onclick="closeSearch();navigateTo('${x.r}','${x.a||''}')"><span class="w-9 h-9 rounded-md bg-tealLight flex items-center justify-center shrink-0"><i data-lucide="file-text" class="w-4 h-4 text-teal"></i></span><span><span class="block font-bold text-navy text-[14px]">${x.t}</span><span class="block text-[12.5px] text-muted">${x.d}</span></span><i data-lucide="arrow-right" class="w-4 h-4 ml-auto text-muted"></i></button>`).join(''):`<p class="text-center text-muted text-[14px] py-8">No matches. Try “health”, “NCB”, “term” or “claim”.</p>`;
+  lucide.createIcons();
+}
+$('#searchOverlay').addEventListener('click',e=>{if(e.target.id==='searchOverlay')closeSearch()});
+
+/* ============ LOGIN / FORMS ============ */
+let demoCode='';
+$$('#otpRow .otp-box').forEach((b,i,arr)=>{b.addEventListener('input',()=>{b.value=b.value.replace(/\D/g,'');if(b.value&&i<3)arr[i+1].focus()});b.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!b.value&&i>0)arr[i-1].focus()})});
+function sendOtp(resend){
+  const ph=$('#loginPhone').value.trim();
+  if(!validMobile(ph)){toast('Enter a valid 10-digit mobile starting 6–9.','error');return}
+  demoCode=String(Math.floor(1000+Math.random()*9000));$('#demoOtp').textContent=demoCode;$('#otpPhoneLbl').textContent=ph;
+  $('#loginStep1').classList.add('hidden');$('#loginStep2').classList.remove('hidden');$('#loginStep3').classList.add('hidden');
+  $$('#otpRow .otp-box').forEach(b=>b.value='');$$('#otpRow .otp-box')[0].focus();
+  toast(resend?'OTP resent to +91 '+ph:'OTP sent to +91 '+ph+' (demo: '+demoCode+')');
+}
+function backToPhone(){$('#loginStep1').classList.remove('hidden');$('#loginStep2').classList.add('hidden')}
+function verifyOtp(){
+  const val=[...$$('#otpRow .otp-box')].map(b=>b.value).join('');
+  if(val!==demoCode){toast('Incorrect OTP. Hint: demo code is '+demoCode+'.','error');return}
+  $('#loggedUser').textContent='+91 '+$('#loginPhone').value.trim();
+  $('#loginStep2').classList.add('hidden');$('#loginStep3').classList.remove('hidden');
+  try{localStorage.setItem('luna_user',$('#loginPhone').value.trim())}catch(e){}
+  toast('Logged in successfully. Welcome!');
+}
+function submitCallback(){
+  const n=$('#cbName').value.trim(),p=$('#cbPhone').value.trim();
+  if(n.length<3||!validMobile(p)){toast('Please enter name and valid 10-digit mobile.','error');return}
+  closeModal('callbackModal');toast(`Callback booked for ${n} · ${$('#cbTime').value}. Ref: CB-${Math.floor(1000+Math.random()*9000)}`);
+  $('#cbName').value='';$('#cbPhone').value='';
+}
+function submitPartner(){
+  const o=$('#ptOrg').value.trim(),e=$('#ptEmail').value.trim(),p=$('#ptPhone').value.trim();
+  if(!o||!/^\S+@\S+\.\S+$/.test(e)||!validMobile(p)){toast('Please fill organisation, valid work email and mobile.','error');return}
+  closeModal('partnerModal');toast('Partnership request received. Our alliances team will verify & respond.');
+}
+function submitContact(){
+  const n=$('#ctName').value.trim(),m=$('#ctMobile').value.trim(),msg=$('#ctMsg').value.trim();
+  if(n.length<3||!validMobile(m)||msg.length<10){toast('Please add name, valid mobile and a message (10+ chars).','error');return}
+  toast(`Message sent (${$('#ctTopic').value}). Ticket: SR-${Math.floor(10000+Math.random()*89999)}. We reply within 1 working day.`);
+  $('#ctName').value='';$('#ctMobile').value='';$('#ctMsg').value='';
+}
+
+/* ============ CHAT ============ */
+let chatOpened=false;
+const quickReplies=['Health plans','Car / Bike quote','Track claim','Talk to human'];
+function toggleChat(force){
+  const p=$('#chatPanel');const open=force!==undefined?force:!p.classList.contains('open');
+  p.classList.toggle('open',open);
+  if(open&&!chatOpened){chatOpened=true;
+    botSay('Namaste! I am <strong>LUNA Assist</strong>. I can help with health, motor & life basics, quotes and claim tracking.');
+    botSay('What would you like to do today?');
+    $('#chatQuick').innerHTML=quickReplies.map(q=>`<button class="quick-chip" onclick="quickChat('${q}')">${q}</button>`).join('');
+  }
+}
+function scrollChat(){const b=$('#chatBody');b.scrollTop=b.scrollHeight}
+function userSay(t){$('#chatBody').insertAdjacentHTML('beforeend',`<div class="flex"><div class="chat-msg chat-user">${t}</div></div>`);scrollChat()}
+function botSay(html,typing){
+  const id='t'+Date.now()+Math.random();
+  if(typing!==false){$('#chatBody').insertAdjacentHTML('beforeend',`<div id="${id}" class="chat-msg chat-bot typing"><span></span> <span></span> <span></span></div>`);scrollChat();
+    setTimeout(()=>{const el=document.getElementById(id);if(el){el.classList.remove('typing');el.innerHTML=html}scrollChat();lucide.createIcons()},reducedMotion?50:700);
+  }else{$('#chatBody').insertAdjacentHTML('beforeend',`<div class="chat-msg chat-bot">${html}</div>`);scrollChat()}
+}
+function quickChat(q){userSay(q);botReply(q)}
+function sendChat(){const v=$('#chatInput').value.trim();if(!v)return;$('#chatInput').value='';userSay(v.replace(/</g,'&lt;'));botReply(v)}
+function botReply(q){
+  q=q.toLowerCase();
+  if(/claim|track|luna-/.test(q))botSay('You can track any claim with its ID (format <strong>LUNA-XXXXXX</strong>). <br><button class="btn btn-navy btn-sm mt-2" onclick="toggleChat(false);navigateTo(\'claims\',\'trackClaim\')">Open tracker</button> <button class="btn btn-outline btn-sm mt-2" onclick="toggleChat(false);openModal(\'callbackModal\')">Claims callback</button>');
+  else if(/car|bike|motor|ncb|idv/.test(q))botSay('For motor: comprehensive covers own damage + third-party; NCB up to 50% rewards claim-free years. Want an instant estimate? <br><button class="btn btn-teal btn-sm mt-2" onclick="toggleChat(false);goQuote(\'car\')">Car quote</button> <button class="btn btn-outline btn-sm mt-2" onclick="toggleChat(false);goQuote(\'bike\')">Bike quote</button>');
+  else if(/health|hospital|cashless|floater/.test(q))botSay('Health tip: check room-rent limits, PED waiting and restoration — not just premium. <br><button class="btn btn-teal btn-sm mt-2" onclick="toggleChat(false);goQuote(\'health\')">Health quote</button> <button class="btn btn-outline btn-sm mt-2" onclick="toggleChat(false);navigateTo(\'health\')">Health guide</button>');
+  else if(/term|life|cover/.test(q))botSay('A common starting point is <strong>15× annual income + loans + goals − assets</strong>. <br><button class="btn btn-teal btn-sm mt-2" onclick="toggleChat(false);goQuote(\'life\')">Term quote</button> <button class="btn btn-outline btn-sm mt-2" onclick="toggleChat(false);navigateTo(\'life\')">Cover calculator</button>');
+  else if(/human|call|callback|advisor|contact|phone/.test(q))botSay('Of course — call <strong>1800 419 0000</strong> (Mon–Sat 9:30–6:30; claims 24×7) or book a callback. <br><button class="btn btn-navy btn-sm mt-2" onclick="toggleChat(false);openModal(\'callbackModal\')">Request callback</button>');
+  else if(/price|premium|quote|cost/.test(q))botSay('I can prepare an illustrative premium in ~2 minutes. Choose a category: <br><div class="flex gap-1.5 flex-wrap mt-2"><button class="quick-chip" onclick="toggleChat(false);goQuote(\'car\')">Car</button><button class="quick-chip" onclick="toggleChat(false);goQuote(\'bike\')">Bike</button><button class="quick-chip" onclick="toggleChat(false);goQuote(\'health\')">Health</button><button class="quick-chip" onclick="toggleChat(false);goQuote(\'life\')">Life</button></div>');
+  else if(/hi|hello|namaste/.test(q))botSay('Namaste! Ask me about <strong>quotes, health waiting periods, NCB, term cover</strong> or <strong>claim tracking</strong>.');
+  else botSay('Thanks — for that specific query, an advisor can help best. <br><button class="btn btn-navy btn-sm mt-2" onclick="toggleChat(false);openModal(\'callbackModal\')">Book free guidance call</button> <button class="btn btn-outline btn-sm mt-2" onclick="toggleChat(false);navigateTo(\'home\',\'faq\')">Browse FAQs</button>');
+}
+
+/* ============ INIT ============ */
+document.addEventListener('DOMContentLoaded',()=>{
+  renderExplore();renderFaq();renderCompare('health');renderStaticJourney();
+  renderDynamicFields();updateQuoteSteps();showLegal('privacy');
+  calcHealth();calcLife();calcSIP();
+  const h=location.hash.replace('#','');if(routes.includes(h)&&h!=='home')navigateTo(h);else navigateTo('home');
+  observeReveals();lucide.createIcons();
+  window.addEventListener('resize',()=>{calcSIP()});
+  // checkbox card init
+  document.addEventListener('change',e=>{if(e.target.matches('.checkbox-card input[type=checkbox]'))e.target.closest('.checkbox-card').classList.toggle('selected',e.target.checked)});
+  setTimeout(()=>{if(!localStorage.getItem('luna_seen')){try{localStorage.setItem('luna_seen','1')}catch(e){}}},500);
+});
+</script>
+<style>.font-800{font-weight:800}</style>
+</body>
 </html>
