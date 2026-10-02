@@ -27,7 +27,7 @@ export default function About() {
             <p>It does not claim to sell, issue or service a policy today. It shows a production-minded interface foundation that can be connected to verified services later.</p>
           </Reveal>
           <Reveal as="figure" className="about-photo" direction="scale" amount={0.25}>
-            <img src="/images/insurance-guidance.jpg" alt="People reviewing an insurance policy document together" width="1400" height="925" loading="lazy" />
+            <img src={`${import.meta.env.BASE_URL}images/insurance-guidance.jpg`} alt="People reviewing an insurance policy document together" width="1400" height="925" loading="lazy" />
             <figcaption>Clear information supports a more considered insurance journey.</figcaption>
           </Reveal>
         </div>
