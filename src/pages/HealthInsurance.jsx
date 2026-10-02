@@ -84,7 +84,7 @@ export default function HealthInsurance() {
           </Reveal>
           <Reveal as="aside" className="health-info" direction="right" amount={0.18}>
             <figure className="journey-photo health-context-photo">
-              <img src="/images/health-cover.jpg" alt="Stethoscope resting on a medical notebook" width="1400" height="2100" loading="lazy" />
+              <img src={`${import.meta.env.BASE_URL}images/health-cover.jpg`} alt="Stethoscope resting on a medical notebook" width="1400" height="2100" loading="lazy" />
               <figcaption>Health protection context</figcaption>
             </figure>
             <p className="eyebrow">COVERAGE CONTEXT</p>
